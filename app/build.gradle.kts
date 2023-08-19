@@ -67,6 +67,13 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
 
+    //GSON
+    implementation("com.google.code.gson:gson:2.9.0")
+
+    //RETROFIT
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
     //navigation
     implementation("androidx.navigation:navigation-compose:$nav_version")
 

@@ -46,7 +46,6 @@ import com.aldeadavila.ecommercemvvm.ui.components.DefaultButton
 import com.aldeadavila.ecommercemvvm.ui.components.DefaultTextField
 import com.aldeadavila.ecommercemvvm.ui.navigation.screen.AuthScreen
 import com.aldeadavila.ecommercemvvm.ui.screens.auth.login.LoginViewModel
-import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -153,7 +152,7 @@ fun LoginContent(
                             .fillMaxWidth()
                             .padding(top = 25.dp),
                         text = "INICIAR SESIÓN",
-                        onClick = { vm.validateForm() },
+                        onClick = { vm.login() },
                         color = Color.White,
                         icon = Icons.Default.AccountCircle
                     )
