@@ -332,3 +332,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+
+/.idea/inspectionProfiles/Project_Default.xml

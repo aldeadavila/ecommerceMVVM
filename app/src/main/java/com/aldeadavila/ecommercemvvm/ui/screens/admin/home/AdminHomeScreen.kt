@@ -1,4 +1,4 @@
-package com.aldeadavila.ecommercemvvm.ui.screens.home
+package com.aldeadavila.ecommercemvvm.ui.screens.admin.home
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -10,12 +10,12 @@ import androidx.navigation.NavHostController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(navHostController: NavHostController) {
+fun AdminHomeScreen(navHostController: NavHostController) {
     Scaffold {
         Text(
             modifier = Modifier
                 .padding(paddingValues = it),
-            text = "HomeScreen")
+            text = "ADMIN HomeScreen")
     }
 
 }

@@ -80,6 +80,9 @@ dependencies {
     //navigation
     implementation("androidx.navigation:navigation-compose:$nav_version")
 
+    //ASYNC IMAGE
+    implementation("io.coil-kt:coil-compose:2.4.0")
+
     //DATA STORE
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 

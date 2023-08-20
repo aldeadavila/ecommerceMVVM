@@ -13,6 +13,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.aldeadavila.ecommercemvvm.domain.util.Resource
 import com.aldeadavila.ecommercemvvm.ui.components.ProgressBar
+import com.aldeadavila.ecommercemvvm.ui.navigation.Graph
 import com.aldeadavila.ecommercemvvm.ui.navigation.screen.AuthScreen
 import com.aldeadavila.ecommercemvvm.ui.screens.auth.login.LoginViewModel
 
@@ -25,10 +26,16 @@ fun Login(navController: NavHostController, vm: LoginViewModel = hiltViewModel()
         }
         is Resource.Succes -> {
             vm.saveSession(response.data)
+
             LaunchedEffect(Unit) {
-                navController.navigate(route = AuthScreen.Home.route) {
-                    popUpTo(AuthScreen.Login.route) {
-                        inclusive = true
+
+                if(response.data.user?.roles!!.size > 1) {
+                    navController.navigate(route = Graph.ROLES) {
+                        popUpTo(Graph.AUTH) { inclusive = true }
+                    }
+                } else { // usuario con un solo rol
+                    navController.navigate(route = Graph.ROLES) {
+                        popUpTo(Graph.AUTH) { inclusive = true }
                     }
                 }
 

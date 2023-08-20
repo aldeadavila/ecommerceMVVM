@@ -6,9 +6,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.aldeadavila.ecommercemvvm.ui.navigation.Graph
 import com.aldeadavila.ecommercemvvm.ui.navigation.screen.AuthScreen
+import com.aldeadavila.ecommercemvvm.ui.screens.admin.home.AdminHomeScreen
 import com.aldeadavila.ecommercemvvm.ui.screens.auth.login.LoginScreen
 import com.aldeadavila.ecommercemvvm.ui.screens.auth.register.RegisterScreen
-import com.aldeadavila.ecommercemvvm.ui.screens.home.HomeScreen
+import com.aldeadavila.ecommercemvvm.ui.screens.client.home.ClientHomeScreen
 import com.aldeadavila.ecommercemvvm.ui.screens.roles.RolesScreen
 
 fun NavGraphBuilder.AuthNavGraph(navController: NavHostController) {
@@ -24,12 +25,5 @@ fun NavGraphBuilder.AuthNavGraph(navController: NavHostController) {
             RegisterScreen(navController)
         }
 
-        composable(route = AuthScreen.Home.route) {
-            HomeScreen(navController)
-        }
-
-        composable(route = AuthScreen.Roles.route) {
-            RolesScreen(navController)
-        }
     }
 }
