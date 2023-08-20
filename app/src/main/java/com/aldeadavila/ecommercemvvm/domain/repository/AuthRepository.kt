@@ -1,9 +1,9 @@
 package com.aldeadavila.ecommercemvvm.domain.repository
 
 import com.aldeadavila.ecommercemvvm.domain.model.AuthResponse
-import com.aldeadavila.ecommercemvvm.domain.util.Response
+import com.aldeadavila.ecommercemvvm.domain.util.Resource
 
 interface AuthRepository {
 
-    suspend fun login(email:String, password:String): Response<AuthResponse>
+    suspend fun login(email:String, password:String): Resource<AuthResponse>
 }

@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aldeadavila.ecommercemvvm.domain.model.AuthResponse
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.AuthUseCase
-import com.aldeadavila.ecommercemvvm.domain.util.Response
+import com.aldeadavila.ecommercemvvm.domain.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -21,19 +21,18 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase): 
         private set
 
     var errorMessage by mutableStateOf("")
-        private set
 
     // LOGIN RESPONSE
-    var loginResponse by mutableStateOf<Response<AuthResponse>?>(null)
+    var loginResource by mutableStateOf<Resource<AuthResponse>?>(null)
         private set
 
     fun login() = viewModelScope.launch {
         if (isValidateForm()) {
-            loginResponse = Response.Loading //esperando respuesta
+            loginResource = Resource.Loading //esperando respuesta
             val result = authUseCase.login(state.email, state.password) // devuelve la respuesta
 
-            loginResponse = result // respuesta exitosa o errónea
-            Log.d("LoginViewModel", "Response guay: ${loginResponse}")
+            loginResource = result // respuesta exitosa o errónea
+            Log.d("LoginViewModel", "Response guay: ${loginResource}")
         }
     }
 
