@@ -5,8 +5,10 @@ import com.aldeadavila.ecommercemvvm.data.repository.datasourceimpl.AuthRemoteDa
 import com.aldeadavila.ecommercemvvm.data.service.AuthService
 import com.aldeadavila.ecommercemvvm.domain.repository.AuthRepository
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.AuthUseCase
+import com.aldeadavila.ecommercemvvm.domain.usecase.auth.GetSessionDataUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.LoginUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.RegisterUseCase
+import com.aldeadavila.ecommercemvvm.domain.usecase.auth.SaveSessionUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,6 +21,8 @@ object UseCaseModule {
     @Provides
     fun provideAuthUseCase(authRepository: AuthRepository) = AuthUseCase(
         login = LoginUseCase(authRepository),
-        register = RegisterUseCase(authRepository)
+        register = RegisterUseCase(authRepository),
+        saveSession = SaveSessionUseCase(authRepository),
+        getSessionData = GetSessionDataUseCase(authRepository)
     )
 }

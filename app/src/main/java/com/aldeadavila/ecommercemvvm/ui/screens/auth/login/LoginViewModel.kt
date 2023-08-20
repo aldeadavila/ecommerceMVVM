@@ -26,6 +26,21 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase): 
     var loginResource by mutableStateOf<Resource<AuthResponse>?>(null)
         private set
 
+    init {
+        getSessionData()
+    }
+    fun getSessionData() = viewModelScope.launch {
+        authUseCase.getSessionData().collect() { data ->
+            if (data != null) {
+                Log.d("LoginViewModel", "Data: ${data.toJson()}")
+            } else {
+                Log.d("LoginViewModel", "Data: NULL")
+            }
+        }
+    }
+    fun saveSession(authResponse: AuthResponse) = viewModelScope.launch {
+        authUseCase.saveSession(authResponse)
+    }
     fun login() = viewModelScope.launch {
         if (isValidateForm()) {
             loginResource = Resource.Loading //esperando respuesta

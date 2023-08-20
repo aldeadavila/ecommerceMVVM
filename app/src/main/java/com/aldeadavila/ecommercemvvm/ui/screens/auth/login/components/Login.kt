@@ -24,6 +24,7 @@ fun Login(navController: NavHostController, vm: LoginViewModel = hiltViewModel()
             ProgressBar()
         }
         is Resource.Succes -> {
+            vm.saveSession(response.data)
             LaunchedEffect(Unit) {
                 navController.navigate(route = AuthScreen.Home.route)
             }
