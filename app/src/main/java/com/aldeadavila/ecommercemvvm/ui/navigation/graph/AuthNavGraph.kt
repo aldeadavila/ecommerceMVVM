@@ -9,6 +9,7 @@ import com.aldeadavila.ecommercemvvm.ui.navigation.screen.AuthScreen
 import com.aldeadavila.ecommercemvvm.ui.screens.auth.login.LoginScreen
 import com.aldeadavila.ecommercemvvm.ui.screens.auth.register.RegisterScreen
 import com.aldeadavila.ecommercemvvm.ui.screens.home.HomeScreen
+import com.aldeadavila.ecommercemvvm.ui.screens.roles.RolesScreen
 
 fun NavGraphBuilder.AuthNavGraph(navController: NavHostController) {
     navigation(
@@ -25,6 +26,10 @@ fun NavGraphBuilder.AuthNavGraph(navController: NavHostController) {
 
         composable(route = AuthScreen.Home.route) {
             HomeScreen(navController)
+        }
+
+        composable(route = AuthScreen.Roles.route) {
+            RolesScreen(navController)
         }
     }
 }
