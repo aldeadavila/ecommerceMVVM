@@ -58,6 +58,7 @@ fun RegisterContent(paddingValues: PaddingValues,
         key1 = vm.errorMessage) {
         if (vm.errorMessage != "") {
             Toast.makeText(context, vm.errorMessage, Toast.LENGTH_LONG).show()
+            vm.errorMessage = ""
         }
 
     }
@@ -186,7 +187,7 @@ fun RegisterContent(paddingValues: PaddingValues,
                             .fillMaxWidth()
                             .height(50.dp),
                         text = "CONFIRMAR",
-                        onClick = { vm.validateForm() })
+                        onClick = { vm.register() })
                 }
 
             }

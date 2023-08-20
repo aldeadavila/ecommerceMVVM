@@ -6,6 +6,7 @@ import com.aldeadavila.ecommercemvvm.data.service.AuthService
 import com.aldeadavila.ecommercemvvm.domain.repository.AuthRepository
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.AuthUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.LoginUseCase
+import com.aldeadavila.ecommercemvvm.domain.usecase.auth.RegisterUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,6 +18,7 @@ object UseCaseModule {
 
     @Provides
     fun provideAuthUseCase(authRepository: AuthRepository) = AuthUseCase(
-        login = LoginUseCase(authRepository)
+        login = LoginUseCase(authRepository),
+        register = RegisterUseCase(authRepository)
     )
 }
