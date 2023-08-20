@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.aldeadavila.ecommercemvvm.domain.model.Rol
+import com.aldeadavila.ecommercemvvm.ui.navigation.Graph
 import com.aldeadavila.ecommercemvvm.ui.navigation.screen.AuthScreen
 
 @Composable
@@ -23,7 +24,7 @@ fun RolesItem(rol: Rol, navHostController: NavHostController) {
     Column(
         modifier = Modifier.clickable {
             navHostController.navigate(route=rol.route) {
-   //             popUpTo(route = AuthScreen.Roles.route) { inclusive = true }
+                popUpTo(route = Graph.ROLES) { inclusive = true }
             }
         }
     ) {
