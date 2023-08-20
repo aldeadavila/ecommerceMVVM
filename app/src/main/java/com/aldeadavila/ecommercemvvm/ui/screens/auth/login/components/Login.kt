@@ -26,7 +26,12 @@ fun Login(navController: NavHostController, vm: LoginViewModel = hiltViewModel()
         is Resource.Succes -> {
             vm.saveSession(response.data)
             LaunchedEffect(Unit) {
-                navController.navigate(route = AuthScreen.Home.route)
+                navController.navigate(route = AuthScreen.Home.route) {
+                    popUpTo(AuthScreen.Login.route) {
+                        inclusive = true
+                    }
+                }
+
             }
         }
 
