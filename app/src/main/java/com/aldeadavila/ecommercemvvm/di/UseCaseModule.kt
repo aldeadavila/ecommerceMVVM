@@ -7,6 +7,7 @@ import com.aldeadavila.ecommercemvvm.domain.repository.AuthRepository
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.AuthUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.GetSessionDataUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.LoginUseCase
+import com.aldeadavila.ecommercemvvm.domain.usecase.auth.LogoutUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.RegisterUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.SaveSessionUseCase
 import dagger.Module
@@ -23,6 +24,7 @@ object UseCaseModule {
         login = LoginUseCase(authRepository),
         register = RegisterUseCase(authRepository),
         saveSession = SaveSessionUseCase(authRepository),
-        getSessionData = GetSessionDataUseCase(authRepository)
+        getSessionData = GetSessionDataUseCase(authRepository),
+        logout = LogoutUseCase(authRepository)
     )
 }
