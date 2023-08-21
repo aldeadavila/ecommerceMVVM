@@ -1,5 +1,6 @@
 package com.aldeadavila.ecommercemvvm.ui.screens.client.home
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -13,6 +14,7 @@ import androidx.navigation.compose.rememberNavController
 import com.aldeadavila.ecommercemvvm.ui.navigation.graph.ClientNavGraph
 import com.aldeadavila.ecommercemvvm.ui.screens.client.home.components.ClientBottomBar
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ClientHomeScreen(navHostController: NavHostController = rememberNavController()
@@ -21,7 +23,7 @@ fun ClientHomeScreen(navHostController: NavHostController = rememberNavControlle
         bottomBar = {
             ClientBottomBar(navHostController = navHostController)
         }
-    ){
+    ){ paddingValues ->
         ClientNavGraph(navController = navHostController)
     }
 

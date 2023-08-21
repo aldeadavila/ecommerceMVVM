@@ -8,6 +8,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.aldeadavila.ecommercemvvm.domain.util.Resource
 import com.aldeadavila.ecommercemvvm.ui.components.ProgressBar
+import com.aldeadavila.ecommercemvvm.ui.navigation.Graph
 import com.aldeadavila.ecommercemvvm.ui.navigation.screen.AuthScreen
 import com.aldeadavila.ecommercemvvm.ui.screens.auth.register.RegisterViewModel
 
@@ -21,11 +22,9 @@ fun Register(navHostController: NavHostController, vm: RegisterViewModel = hiltV
         is Resource.Succes -> {
             vm.saveSession(response.data)
             LaunchedEffect(Unit) {
-  //              navHostController.navigate(route = AuthScreen.Home.route) {
-  //                  popUpTo(AuthScreen.Login.route) {
-  //                      inclusive = true
-  //                  }
-  //              }
+                navHostController.navigate(route = Graph.CLIENT) {
+                    popUpTo(Graph.AUTH) { inclusive = true }
+                }
 
             }
         }

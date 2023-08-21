@@ -7,6 +7,7 @@ import androidx.navigation.navigation
 import com.aldeadavila.ecommercemvvm.ui.navigation.Graph
 import com.aldeadavila.ecommercemvvm.ui.navigation.screen.AuthScreen
 import com.aldeadavila.ecommercemvvm.ui.navigation.screen.RolesScreen
+import com.aldeadavila.ecommercemvvm.ui.screens.admin.home.AdminHomeScreen
 import com.aldeadavila.ecommercemvvm.ui.screens.client.home.ClientHomeScreen
 import com.aldeadavila.ecommercemvvm.ui.screens.roles.RolesScreen
 
@@ -20,8 +21,12 @@ fun NavGraphBuilder.RolesNavGraph(navController: NavHostController) {
             RolesScreen(navController)
         }
 
-        composable(route = Graph.CLIENT) {
+        composable(route = Graph.ADMIN) {
             ClientHomeScreen()
+        }
+
+        composable(route = Graph.ADMIN) {
+            AdminHomeScreen()
         }
 
     }
