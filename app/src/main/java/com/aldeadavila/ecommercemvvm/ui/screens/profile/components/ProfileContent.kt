@@ -39,6 +39,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import coil.compose.AsyncImage
 import com.aldeadavila.ecommercemvvm.R
 import com.aldeadavila.ecommercemvvm.ui.MainActivity
 import com.aldeadavila.ecommercemvvm.ui.components.DefaultButton
@@ -49,7 +50,9 @@ import com.aldeadavila.ecommercemvvm.ui.theme.EcommerceMVVMTheme
 fun ProfileContent(paddingValues: PaddingValues, vm: ProfileViewModel = hiltViewModel()) {
     val activity = LocalContext.current as? Activity
 
-    Box(modifier = Modifier.padding(paddingValues = paddingValues).padding(bottom = 50.dp) ) {
+    Box(modifier = Modifier
+        .padding(paddingValues = paddingValues)
+        .padding(bottom = 50.dp) ) {
         Image(
             modifier = Modifier.fillMaxSize(),
             painter = painterResource(id = R.drawable.profile_background),
@@ -74,14 +77,27 @@ fun ProfileContent(paddingValues: PaddingValues, vm: ProfileViewModel = hiltView
                     tint = Color.White)
 
             }
-            Image(
-                modifier = Modifier
-                    .size(150.dp)
-                    .clip(CircleShape)
-                    .align(Alignment.CenterHorizontally),
-                painter = painterResource(id = R.drawable.user_image),
-                contentDescription = ""
-            )
+            if (vm.user?.image.isNullOrBlank()) {
+                AsyncImage(
+                    modifier = Modifier
+                        .size(150.dp)
+                        .clip(CircleShape)
+                        .align(Alignment.CenterHorizontally),
+                    model = vm.user?.image,
+                    contentDescription = "",
+                    contentScale = ContentScale.Crop
+                )
+            } else {
+                Image(
+                    modifier = Modifier
+                        .size(150.dp)
+                        .clip(CircleShape)
+                        .align(Alignment.CenterHorizontally),
+                    painter = painterResource(id = R.drawable.user_image),
+                    contentDescription = ""
+                )
+            }
+
             Spacer(modifier = Modifier.weight(1f))
             Card(
                 modifier= Modifier
@@ -106,7 +122,7 @@ fun ProfileContent(paddingValues: PaddingValues, vm: ProfileViewModel = hiltView
                         Column (
                             modifier = Modifier.padding(horizontal = 5.dp)
                         ) {
-                            Text(text = "Pepito Perez")
+                            Text(text = "${vm.user?.name} ${vm.user?.lastname}")
                             Text(text = "Nombre de usuario",
                                 fontSize = 12.sp,
                                 color = Color.Gray
@@ -125,7 +141,7 @@ fun ProfileContent(paddingValues: PaddingValues, vm: ProfileViewModel = hiltView
                         Column (
                             modifier = Modifier.padding(horizontal = 5.dp)
                         ) {
-                            Text(text = "Pepito@pepito.com")
+                            Text(text = vm.user?.email ?: "")
                             Text(text = "Correo electrónico",
                                 fontSize = 12.sp,
                                 color = Color.Gray
@@ -144,7 +160,7 @@ fun ProfileContent(paddingValues: PaddingValues, vm: ProfileViewModel = hiltView
                         Column (
                             modifier = Modifier.padding(horizontal = 5.dp)
                         ) {
-                            Text(text = "+34 676768998")
+                            Text(text = vm.user?.phone ?: "")
                             Text(text = "Teléfono",
                                 fontSize = 12.sp,
                                 color = Color.Gray
