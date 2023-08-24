@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.aldeadavila.ecommercemvvm.ui.navigation.graph.RootNavGraph
+import com.aldeadavila.ecommercemvvm.ui.navigation.graph.root.RootNavGraph
 import com.aldeadavila.ecommercemvvm.ui.screens.auth.login.LoginScreen
 import com.aldeadavila.ecommercemvvm.ui.theme.EcommerceMVVMTheme
 import dagger.hilt.android.AndroidEntryPoint

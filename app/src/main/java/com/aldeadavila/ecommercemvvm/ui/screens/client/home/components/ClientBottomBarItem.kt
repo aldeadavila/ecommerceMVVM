@@ -5,12 +5,11 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
-import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
-import com.aldeadavila.ecommercemvvm.ui.navigation.screen.ClientScreen
+import com.aldeadavila.ecommercemvvm.ui.navigation.screen.client.ClientScreen
 
 @Composable
 fun RowScope.ClientBottomBarItem(

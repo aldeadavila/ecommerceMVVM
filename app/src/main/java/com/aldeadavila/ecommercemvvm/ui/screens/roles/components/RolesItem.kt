@@ -1,6 +1,5 @@
 package com.aldeadavila.ecommercemvvm.ui.screens.roles.components
 
-import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -16,7 +15,6 @@ import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.aldeadavila.ecommercemvvm.domain.model.Rol
 import com.aldeadavila.ecommercemvvm.ui.navigation.Graph
-import com.aldeadavila.ecommercemvvm.ui.navigation.screen.AuthScreen
 
 @Composable
 fun RolesItem(rol: Rol, navHostController: NavHostController) {

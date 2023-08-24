@@ -1,4 +1,4 @@
-package com.aldeadavila.ecommercemvvm.ui.screens.profile.components
+package com.aldeadavila.ecommercemvvm.ui.screens.profile.update.components
 
 import android.app.Activity
 import android.content.Intent
@@ -43,16 +43,17 @@ import coil.compose.AsyncImage
 import com.aldeadavila.ecommercemvvm.R
 import com.aldeadavila.ecommercemvvm.ui.MainActivity
 import com.aldeadavila.ecommercemvvm.ui.components.DefaultButton
-import com.aldeadavila.ecommercemvvm.ui.screens.profile.ProfileViewModel
+import com.aldeadavila.ecommercemvvm.ui.components.DefaultTextField
+import com.aldeadavila.ecommercemvvm.ui.screens.profile.update.ProfileUpdateViewModel
 import com.aldeadavila.ecommercemvvm.ui.theme.EcommerceMVVMTheme
 
 @Composable
-fun ProfileContent(paddingValues: PaddingValues, vm: ProfileViewModel = hiltViewModel()) {
+fun ProfileUpdateContent(paddingValues: PaddingValues, vm: ProfileUpdateViewModel = hiltViewModel()) {
     val activity = LocalContext.current as? Activity
 
     Box(modifier = Modifier
         .padding(paddingValues = paddingValues)
-        .padding(bottom = 50.dp) ) {
+         ) {
         Image(
             modifier = Modifier.fillMaxSize(),
             painter = painterResource(id = R.drawable.profile_background),
@@ -61,22 +62,7 @@ fun ProfileContent(paddingValues: PaddingValues, vm: ProfileViewModel = hiltView
             colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply { setToScale(0.6f, 0.6f,0.6f, 1f) })
         )
         Column (modifier = Modifier.fillMaxWidth()){
-            IconButton(
-                modifier = Modifier
-                    .align(Alignment.End)
-                    .padding(end = 15.dp, top = 15.dp),
-                onClick = {
-                    vm.logout()
-                    activity?.finish()
-                    activity?.startActivity(Intent(activity, MainActivity::class.java))
-                }) {
-                Icon(
-                    modifier = Modifier.size(35.dp),
-                    imageVector = Icons.Default.ExitToApp,
-                    contentDescription = "",
-                    tint = Color.White)
 
-            }
             if (vm.user?.image.isNullOrBlank()) {
                 AsyncImage(
                     modifier = Modifier
@@ -119,15 +105,14 @@ fun ProfileContent(paddingValues: PaddingValues, vm: ProfileViewModel = hiltView
                     ) {
                         Icon(imageVector = Icons.Default.Person,
                             contentDescription = "")
-                        Column (
-                            modifier = Modifier.padding(horizontal = 5.dp)
-                        ) {
-                            Text(text = "${vm.user?.name} ${vm.user?.lastname}")
-                            Text(text = "Nombre de usuario",
-                                fontSize = 12.sp,
-                                color = Color.Gray
-                            )
-                        }
+                        DefaultTextField(
+                            modifier = Modifier.fillMaxWidth(),
+                            value = "",
+                            onValueChange = {},
+                            label = "Nombre",
+                            icon = Icons.Default.Person,
+                            contentDescription = ""
+                        )
                     }
 
                     Row (modifier = Modifier
@@ -138,15 +123,14 @@ fun ProfileContent(paddingValues: PaddingValues, vm: ProfileViewModel = hiltView
                     ) {
                         Icon(imageVector = Icons.Default.Email,
                             contentDescription = "")
-                        Column (
-                            modifier = Modifier.padding(horizontal = 5.dp)
-                        ) {
-                            Text(text = vm.user?.email ?: "")
-                            Text(text = "Correo electrónico",
-                                fontSize = 12.sp,
-                                color = Color.Gray
-                            )
-                        }
+                        DefaultTextField(
+                            modifier = Modifier.fillMaxWidth(),
+                            value = "",
+                            onValueChange = {},
+                            label = "Email",
+                            icon = Icons.Default.Email,
+                            contentDescription = ""
+                        )
                     }
 
                     Row (modifier = Modifier
@@ -157,23 +141,20 @@ fun ProfileContent(paddingValues: PaddingValues, vm: ProfileViewModel = hiltView
                     ) {
                         Icon(imageVector = Icons.Default.Phone,
                             contentDescription = "")
-                        Column (
-                            modifier = Modifier.padding(horizontal = 5.dp)
-                        ) {
-                            Text(text = vm.user?.phone ?: "")
-                            Text(text = "Teléfono",
-                                fontSize = 12.sp,
-                                color = Color.Gray
-                            )
-                        }
+                        DefaultTextField(
+                            modifier = Modifier.fillMaxWidth(),
+                            value = "",
+                            onValueChange = {},
+                            label = "Teléfono",
+                            icon = Icons.Default.Phone,
+                            contentDescription = ""
+                        )
                     }
                 }
                 Spacer(modifier = Modifier.height(40.dp))
                 DefaultButton(modifier = Modifier.fillMaxWidth(),
-                    text = "Actualizar información",
+                    text = "Confirmar",
                     onClick = { })
-
-
 
             }
         }
@@ -185,6 +166,6 @@ fun ProfileContent(paddingValues: PaddingValues, vm: ProfileViewModel = hiltView
 @Composable
 fun ProfileContentPreview() {
     EcommerceMVVMTheme {
-        ProfileContent(paddingValues = PaddingValues())
+        ProfileUpdateContent(paddingValues = PaddingValues())
     }
 }

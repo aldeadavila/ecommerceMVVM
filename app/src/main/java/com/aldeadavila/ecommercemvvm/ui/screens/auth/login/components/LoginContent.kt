@@ -44,7 +44,7 @@ import androidx.navigation.NavHostController
 import com.aldeadavila.ecommercemvvm.R
 import com.aldeadavila.ecommercemvvm.ui.components.DefaultButton
 import com.aldeadavila.ecommercemvvm.ui.components.DefaultTextField
-import com.aldeadavila.ecommercemvvm.ui.navigation.screen.AuthScreen
+import com.aldeadavila.ecommercemvvm.ui.navigation.screen.auth.AuthScreen
 import com.aldeadavila.ecommercemvvm.ui.screens.auth.login.LoginViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)

@@ -1,17 +1,15 @@
-package com.aldeadavila.ecommercemvvm.ui.navigation.graph
+package com.aldeadavila.ecommercemvvm.ui.navigation.graph.client
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.aldeadavila.ecommercemvvm.ui.navigation.Graph
-import com.aldeadavila.ecommercemvvm.ui.navigation.screen.ClientScreen
-import com.aldeadavila.ecommercemvvm.ui.navigation.screen.RolesScreen
+import com.aldeadavila.ecommercemvvm.ui.navigation.graph.profile.ProfileNavGraph
+import com.aldeadavila.ecommercemvvm.ui.navigation.screen.client.ClientScreen
 import com.aldeadavila.ecommercemvvm.ui.screens.client.category.list.ClientCategoryListScreen
 import com.aldeadavila.ecommercemvvm.ui.screens.client.product.list.ClientProductListScreen
-import com.aldeadavila.ecommercemvvm.ui.screens.profile.ProfileScreen
-import com.aldeadavila.ecommercemvvm.ui.screens.roles.RolesScreen
+import com.aldeadavila.ecommercemvvm.ui.screens.profile.info.ProfileScreen
 
 @Composable
 fun ClientNavGraph(navController: NavHostController) {
@@ -28,7 +26,9 @@ fun ClientNavGraph(navController: NavHostController) {
         }
 
         composable(route = ClientScreen.Profile.route) {
-            ProfileScreen()
+            ProfileScreen(navController)
         }
+
+       ProfileNavGraph(navController)
     }
 }

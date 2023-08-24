@@ -1,4 +1,4 @@
-package com.aldeadavila.ecommercemvvm.ui.screens.profile
+package com.aldeadavila.ecommercemvvm.ui.screens.profile.update
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -12,20 +12,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProfileViewModel @Inject constructor(private val authUseCase: AuthUseCase): ViewModel() {
+class ProfileUpdateViewModel @Inject constructor(private val authUseCase: AuthUseCase): ViewModel() {
 
     var user by mutableStateOf<User?> (null)
         private set
 
-    init {
-        getSessionDate()
-    }
-    fun getSessionDate() = viewModelScope.launch {
-        authUseCase.getSessionData().collect() { data ->
-            user = data.user
-        }
-    }
-    fun logout() = viewModelScope.launch {
-        authUseCase.logout()
-    }
+
 }

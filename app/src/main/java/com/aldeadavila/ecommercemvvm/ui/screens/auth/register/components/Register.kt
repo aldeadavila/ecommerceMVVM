@@ -9,7 +9,6 @@ import androidx.navigation.NavHostController
 import com.aldeadavila.ecommercemvvm.domain.util.Resource
 import com.aldeadavila.ecommercemvvm.ui.components.ProgressBar
 import com.aldeadavila.ecommercemvvm.ui.navigation.Graph
-import com.aldeadavila.ecommercemvvm.ui.navigation.screen.AuthScreen
 import com.aldeadavila.ecommercemvvm.ui.screens.auth.register.RegisterViewModel
 
 @Composable
