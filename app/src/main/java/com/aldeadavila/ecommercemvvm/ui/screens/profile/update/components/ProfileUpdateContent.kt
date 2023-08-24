@@ -35,6 +35,7 @@ import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -50,6 +51,7 @@ import com.aldeadavila.ecommercemvvm.ui.theme.EcommerceMVVMTheme
 @Composable
 fun ProfileUpdateContent(paddingValues: PaddingValues, vm: ProfileUpdateViewModel = hiltViewModel()) {
     val activity = LocalContext.current as? Activity
+    val state = vm.state
 
     Box(modifier = Modifier
         .padding(paddingValues = paddingValues)
@@ -62,14 +64,14 @@ fun ProfileUpdateContent(paddingValues: PaddingValues, vm: ProfileUpdateViewMode
             colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply { setToScale(0.6f, 0.6f,0.6f, 1f) })
         )
         Column (modifier = Modifier.fillMaxWidth()){
-
-            if (vm.user?.image.isNullOrBlank()) {
+            Spacer(modifier = Modifier.padding(40.dp))
+            if (!state.image.isNullOrBlank()) {
                 AsyncImage(
                     modifier = Modifier
                         .size(150.dp)
                         .clip(CircleShape)
                         .align(Alignment.CenterHorizontally),
-                    model = vm.user?.image,
+                    model = state.image,
                     contentDescription = "",
                     contentScale = ContentScale.Crop
                 )
@@ -96,69 +98,55 @@ fun ProfileUpdateContent(paddingValues: PaddingValues, vm: ProfileUpdateViewMode
                     containerColor = Color.White.copy(alpha = 0.7f),
                 )
             ){
-                Column (modifier = Modifier.padding(20.dp)){
-                    Row (modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 15.dp),
-                        verticalAlignment = Alignment.CenterVertically
+                Column (modifier = Modifier.padding(20.dp))
+                {
+                    Text(
+                        modifier = Modifier
+                            .padding(bottom = 20.dp),
+                        text = "ACTUALIZAR",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        color = Color.Black
+                    )
 
-                    ) {
-                        Icon(imageVector = Icons.Default.Person,
-                            contentDescription = "")
-                        DefaultTextField(
-                            modifier = Modifier.fillMaxWidth(),
-                            value = "",
-                            onValueChange = {},
-                            label = "Nombre",
-                            icon = Icons.Default.Person,
-                            contentDescription = ""
-                        )
-                    }
+                    DefaultTextField(
+                        modifier = Modifier.fillMaxWidth(),
+                        value = state.name,
+                        onValueChange = { vm.onNameInput(it)},
+                        label = "Nombre",
+                        icon = Icons.Default.Person,
+                        contentDescription = ""
+                    )
 
-                    Row (modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 15.dp),
-                        verticalAlignment = Alignment.CenterVertically
+                    DefaultTextField(
+                        modifier = Modifier.fillMaxWidth(),
+                        value = state.lastname,
+                        onValueChange = { vm.onLastNameInput(it)},
+                        label = "Apellidos",
+                        icon = Icons.Default.Person,
+                        contentDescription = ""
+                    )
 
-                    ) {
-                        Icon(imageVector = Icons.Default.Email,
-                            contentDescription = "")
-                        DefaultTextField(
-                            modifier = Modifier.fillMaxWidth(),
-                            value = "",
-                            onValueChange = {},
-                            label = "Email",
-                            icon = Icons.Default.Email,
-                            contentDescription = ""
-                        )
-                    }
-
-                    Row (modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 15.dp),
-                        verticalAlignment = Alignment.CenterVertically
-
-                    ) {
-                        Icon(imageVector = Icons.Default.Phone,
-                            contentDescription = "")
-                        DefaultTextField(
-                            modifier = Modifier.fillMaxWidth(),
-                            value = "",
-                            onValueChange = {},
-                            label = "Teléfono",
-                            icon = Icons.Default.Phone,
-                            contentDescription = ""
-                        )
-                    }
+                    DefaultTextField(
+                        modifier = Modifier.fillMaxWidth(),
+                        value = state.phone,
+                        onValueChange = {vm.onPhoneInput(it)},
+                        label = "Teléfono",
+                        icon = Icons.Default.Phone,
+                        contentDescription = ""
+                    )
                 }
-                Spacer(modifier = Modifier.height(40.dp))
-                DefaultButton(modifier = Modifier.fillMaxWidth(),
-                    text = "Confirmar",
-                    onClick = { })
-
             }
+            Spacer(modifier = Modifier.height(40.dp))
+            DefaultButton(modifier = Modifier.fillMaxWidth(),
+                text = "Confirmar",
+                onClick = {
+
+                })
+
         }
     }
+
 
 }
 

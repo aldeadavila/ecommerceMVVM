@@ -171,7 +171,7 @@ fun ProfileContent(paddingValues: PaddingValues, navvHostController: NavHostCont
                 Spacer(modifier = Modifier.height(40.dp))
                 DefaultButton(modifier = Modifier.fillMaxWidth(),
                     text = "Actualizar información",
-                    onClick = { navvHostController.navigate(route = Graph.PROFILE) })
+                    onClick = { navvHostController.navigate(route = "${Graph.PROFILE}/${vm.user?.toJson()}") })
 
 
 
