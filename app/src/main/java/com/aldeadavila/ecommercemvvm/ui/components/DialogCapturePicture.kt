@@ -56,7 +56,7 @@ fun DialagoCapturePicture(
                     modifier = Modifier.width(130.dp),
                     onClick = {
                         state.value = false
-                        pickImage()
+                        takePhoto()
                     },
                     content = {
                         Text(text = "Cámara")

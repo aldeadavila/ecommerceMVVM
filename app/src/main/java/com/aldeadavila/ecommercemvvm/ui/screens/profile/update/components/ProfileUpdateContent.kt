@@ -58,10 +58,11 @@ fun ProfileUpdateContent(paddingValues: PaddingValues, vm: ProfileUpdateViewMode
     val activity = LocalContext.current as? Activity
     val state = vm.state
     val stateDialog = remember { mutableStateOf(false) }
+    vm.resultingActivityHandler.handle()
 
     DialagoCapturePicture(state = stateDialog,
-        takePhoto = { },
-        pickImage = { }
+        takePhoto = { vm.takePhoto()},
+        pickImage = { vm.pickImage()}
     )
 
     Box(modifier = Modifier

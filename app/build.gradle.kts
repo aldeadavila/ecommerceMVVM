@@ -67,6 +67,9 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
 
+    //FILES INFORMATION
+    implementation("commons-io:commons-io:2.7")
+
     //GSON
     implementation("com.google.code.gson:gson:2.9.0")
 
