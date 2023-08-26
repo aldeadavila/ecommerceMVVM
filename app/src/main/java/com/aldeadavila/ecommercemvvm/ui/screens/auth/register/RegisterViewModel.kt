@@ -10,8 +10,8 @@ import com.aldeadavila.ecommercemvvm.domain.model.AuthResponse
 import com.aldeadavila.ecommercemvvm.domain.model.User
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.AuthUseCase
 import com.aldeadavila.ecommercemvvm.domain.util.Resource
+import com.aldeadavila.ecommercemvvm.ui.screens.auth.register.mapper.toUser
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -32,15 +32,8 @@ class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase
 
     fun register() = viewModelScope.launch {
         if (isValidateForm()) {
-            val user = User(
-                name = state.name,
-                lastname = state.lastname,
-                phone = state.phone,
-                email = state.email,
-                password = state.password
-            )
             registerResponse = Resource.Loading
-            val result = authUseCase.register(user)
+            val result = authUseCase.register(state.toUser())
             registerResponse = result
         }
     }

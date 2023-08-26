@@ -11,6 +11,7 @@ import com.aldeadavila.ecommercemvvm.domain.model.User
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.AuthUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.users.UsersUseCase
 import com.aldeadavila.ecommercemvvm.domain.util.Resource
+import com.aldeadavila.ecommercemvvm.ui.screens.profile.update.mapper.toUser
 import com.aldeadavila.ecommercemvvm.ui.util.ComposeFileProvider
 import com.aldeadavila.ecommercemvvm.ui.util.ResultingActivityHandler
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -45,20 +46,14 @@ class ProfileUpdateViewModel @Inject constructor(
             name = user.name,
             lastname = user.lastname,
             phone = user.phone,
-            image = user.image ?: ""
+            image = user.image
         )
     }
 
     fun update() = viewModelScope.launch {
 
-        val userData = User(
-            name = state.name,
-            lastname = state.lastname,
-            phone = state.phone
-        )
-
         updateResponse = Resource.Loading
-        val result = usersUseCase.updateUser(user.id ?: "", userData)
+        val result = usersUseCase.updateUser(user.id ?: "", state.toUser())
         updateResponse = result
     }
 
