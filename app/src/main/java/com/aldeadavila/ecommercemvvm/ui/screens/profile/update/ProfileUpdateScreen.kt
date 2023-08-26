@@ -8,6 +8,7 @@ import androidx.navigation.NavHostController
 import com.aldeadavila.ecommercemvvm.ui.components.DefaultTopBar
 import com.aldeadavila.ecommercemvvm.ui.screens.profile.info.components.ProfileContent
 import com.aldeadavila.ecommercemvvm.ui.screens.profile.update.components.ProfileUpdateContent
+import com.aldeadavila.ecommercemvvm.ui.screens.profile.update.components.UpdateUser
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -22,4 +23,5 @@ fun ProfileUpdateScreen(navController: NavHostController, userParam: String) {
     ) {
         ProfileUpdateContent(paddingValues = it)
     }
+    UpdateUser()
 }

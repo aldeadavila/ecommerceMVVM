@@ -4,12 +4,15 @@ import com.aldeadavila.ecommercemvvm.data.repository.datasource.AuthRemoteDataso
 import com.aldeadavila.ecommercemvvm.data.repository.datasourceimpl.AuthRemoteDatasourceImpl
 import com.aldeadavila.ecommercemvvm.data.service.AuthService
 import com.aldeadavila.ecommercemvvm.domain.repository.AuthRepository
+import com.aldeadavila.ecommercemvvm.domain.repository.UsersRepository
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.AuthUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.GetSessionDataUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.LoginUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.LogoutUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.RegisterUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.SaveSessionUseCase
+import com.aldeadavila.ecommercemvvm.domain.usecase.users.UpdateUserUseCase
+import com.aldeadavila.ecommercemvvm.domain.usecase.users.UsersUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,5 +29,11 @@ object UseCaseModule {
         saveSession = SaveSessionUseCase(authRepository),
         getSessionData = GetSessionDataUseCase(authRepository),
         logout = LogoutUseCase(authRepository)
+    )
+
+    @Provides
+    fun provideUsersUseCase(usersRepository: UsersRepository) = UsersUseCase(
+        updateUser = UpdateUserUseCase(usersRepository),
+
     )
 }

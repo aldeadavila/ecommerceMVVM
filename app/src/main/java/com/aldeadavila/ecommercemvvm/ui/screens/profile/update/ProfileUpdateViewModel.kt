@@ -9,6 +9,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aldeadavila.ecommercemvvm.domain.model.User
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.AuthUseCase
+import com.aldeadavila.ecommercemvvm.domain.usecase.users.UsersUseCase
+import com.aldeadavila.ecommercemvvm.domain.util.Resource
 import com.aldeadavila.ecommercemvvm.ui.util.ComposeFileProvider
 import com.aldeadavila.ecommercemvvm.ui.util.ResultingActivityHandler
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,6 +22,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ProfileUpdateViewModel @Inject constructor(
     private val authUseCase: AuthUseCase,
+    private val usersUseCase: UsersUseCase,
     private val savedStateHandle: SavedStateHandle,
     @ApplicationContext private val context: Context
     ): ViewModel() {
@@ -28,11 +31,14 @@ class ProfileUpdateViewModel @Inject constructor(
 
     //Arguments
     val data = savedStateHandle.get<String>("user")
-    val user = User.fromJson(data!!)
+    var user = User.fromJson(data!!)
 
     //imagenes
     var file: File? = null
     val resultingActivityHandler = ResultingActivityHandler()
+
+    var updateResponse by mutableStateOf<Resource<User>?>(null)
+        private set
 
     init {
         state = state.copy(
@@ -41,6 +47,19 @@ class ProfileUpdateViewModel @Inject constructor(
             phone = user.phone,
             image = user.image ?: ""
         )
+    }
+
+    fun update() = viewModelScope.launch {
+
+        val userData = User(
+            name = state.name,
+            lastname = state.lastname,
+            phone = state.phone
+        )
+
+        updateResponse = Resource.Loading
+        val result = usersUseCase.updateUser(user.id ?: "", userData)
+        updateResponse = result
     }
 
     fun pickImage() = viewModelScope.launch {
