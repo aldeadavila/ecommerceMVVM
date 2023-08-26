@@ -2,6 +2,7 @@ package com.aldeadavila.ecommercemvvm.ui.screens.profile.update.components
 
 import android.app.Activity
 import android.content.Intent
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -77,6 +78,7 @@ fun ProfileUpdateContent(paddingValues: PaddingValues, vm: ProfileUpdateViewMode
         )
         Column (modifier = Modifier.fillMaxWidth()){
             Spacer(modifier = Modifier.padding(40.dp))
+            Log.d("ProfileUpdateContent", "Image: ${state.image}")
             if (!state.image.isNullOrBlank()) {
                 AsyncImage(
                     modifier = Modifier
@@ -155,7 +157,7 @@ fun ProfileUpdateContent(paddingValues: PaddingValues, vm: ProfileUpdateViewMode
             DefaultButton(modifier = Modifier.fillMaxWidth(),
                 text = "Confirmar",
                 onClick = {
-                    vm.update()
+                    vm.onUpdate()
                 })
 
         }

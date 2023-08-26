@@ -77,7 +77,7 @@ fun ProfileContent(paddingValues: PaddingValues, navvHostController: NavHostCont
                     tint = Color.White)
 
             }
-            if (vm.user?.image.isNullOrBlank()) {
+            if (!vm.user?.image.isNullOrBlank()) {
                 AsyncImage(
                     modifier = Modifier
                         .size(150.dp)

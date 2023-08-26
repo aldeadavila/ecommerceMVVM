@@ -13,6 +13,7 @@ import com.aldeadavila.ecommercemvvm.domain.usecase.auth.RegisterUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.SaveSessionUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.UpdateSessionUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.users.UpdateUserUseCase
+import com.aldeadavila.ecommercemvvm.domain.usecase.users.UpdateUserWithImageUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.users.UsersUseCase
 import dagger.Module
 import dagger.Provides
@@ -36,6 +37,7 @@ object UseCaseModule {
     @Provides
     fun provideUsersUseCase(usersRepository: UsersRepository) = UsersUseCase(
         updateUser = UpdateUserUseCase(usersRepository),
+        updateUserWithImageUseCase = UpdateUserWithImageUseCase(usersRepository)
 
     )
 }
