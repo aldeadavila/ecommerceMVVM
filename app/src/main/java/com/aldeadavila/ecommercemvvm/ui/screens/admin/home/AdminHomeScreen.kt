@@ -15,7 +15,7 @@ import com.aldeadavila.ecommercemvvm.ui.screens.admin.home.components.AdminBotto
 fun AdminHomeScreen(navHostController: NavHostController = rememberNavController()) {
     Scaffold (
         bottomBar = { AdminBottomBar(navHostController = navHostController)}
-    ){paddingValues  ->
+    ){
         AdminNavGraph(navController = navHostController)
     }
 
