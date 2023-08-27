@@ -3,6 +3,7 @@ package com.aldeadavila.ecommercemvvm.di
 import com.aldeadavila.ecommercemvvm.core.Config.BASE_URL
 import com.aldeadavila.ecommercemvvm.data.datastore.AuthDataStore
 import com.aldeadavila.ecommercemvvm.data.service.AuthService
+import com.aldeadavila.ecommercemvvm.data.service.CategoryService
 import com.aldeadavila.ecommercemvvm.data.service.UserService
 import dagger.Module
 import dagger.Provides
@@ -51,8 +52,14 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideAUserService(retrofit: Retrofit): UserService {
+    fun provideUserService(retrofit: Retrofit): UserService {
         return retrofit.create(UserService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCategoryService(retrofit: Retrofit): CategoryService {
+        return retrofit.create(CategoryService::class.java)
     }
 
 }

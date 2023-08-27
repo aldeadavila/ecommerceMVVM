@@ -4,6 +4,7 @@ import com.aldeadavila.ecommercemvvm.data.repository.datasource.AuthRemoteDataso
 import com.aldeadavila.ecommercemvvm.data.repository.datasourceimpl.AuthRemoteDatasourceImpl
 import com.aldeadavila.ecommercemvvm.data.service.AuthService
 import com.aldeadavila.ecommercemvvm.domain.repository.AuthRepository
+import com.aldeadavila.ecommercemvvm.domain.repository.CategoriesRepository
 import com.aldeadavila.ecommercemvvm.domain.repository.UsersRepository
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.AuthUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.GetSessionDataUseCase
@@ -12,6 +13,8 @@ import com.aldeadavila.ecommercemvvm.domain.usecase.auth.LogoutUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.RegisterUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.SaveSessionUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.UpdateSessionUseCase
+import com.aldeadavila.ecommercemvvm.domain.usecase.categories.CategoriesUseCase
+import com.aldeadavila.ecommercemvvm.domain.usecase.categories.CreateCategoryUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.users.UpdateUserUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.users.UpdateUserWithImageUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.users.UsersUseCase
@@ -39,5 +42,10 @@ object UseCaseModule {
         updateUser = UpdateUserUseCase(usersRepository),
         updateUserWithImageUseCase = UpdateUserWithImageUseCase(usersRepository)
 
+    )
+
+    @Provides
+    fun provideCategoriesUseCase(categoriesRepository: CategoriesRepository) = CategoriesUseCase(
+        createCategory= CreateCategoryUseCase(categoriesRepository)
     )
 }

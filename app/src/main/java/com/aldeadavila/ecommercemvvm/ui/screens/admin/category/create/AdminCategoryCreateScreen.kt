@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import com.aldeadavila.ecommercemvvm.ui.components.DefaultTopBar
 import com.aldeadavila.ecommercemvvm.ui.screens.admin.category.create.components.AdminCategoryCreateContent
+import com.aldeadavila.ecommercemvvm.ui.screens.admin.category.create.components.CreateCategory
 import com.aldeadavila.ecommercemvvm.ui.theme.Gray200
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -24,4 +25,5 @@ fun AdminCategoryCreateScreen(navHostController: NavHostController) {
 
         AdminCategoryCreateContent(paddingValues = it)
     }
+    CreateCategory()
 }
