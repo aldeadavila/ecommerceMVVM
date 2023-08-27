@@ -2,6 +2,7 @@ package com.aldeadavila.ecommercemvvm.ui.screens.admin.category.list.components
 
 import android.util.Log
 import android.widget.Toast
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -11,15 +12,15 @@ import com.aldeadavila.ecommercemvvm.ui.screens.admin.category.create.AdminCateg
 import com.aldeadavila.ecommercemvvm.ui.screens.admin.category.list.AdminCategoryListViewModel
 
 @Composable
-fun GetCategories(vm: AdminCategoryListViewModel = hiltViewModel()) {
+fun GetCategories(paddingValues: PaddingValues, vm: AdminCategoryListViewModel = hiltViewModel()) {
 
     when(val response = vm.categoriesResponse) {
         Resource.Loading -> {
             ProgressBar()
         }
         is Resource.Succes -> {
-            Log.d("GetCategories", "Data: ${response.data}")
-           // vm.categoryResponse(response.data)
+
+           AdminScreenCategoryListContent(categories = response.data, paddingValues = paddingValues)
 
         }
 

@@ -41,7 +41,7 @@ fun AdminCategoryListScreen(navHostController: NavHostController) {
            }
        }
     ){
-        AdminScreenCategoryListContent(paddingValues = it)
+       GetCategories(it)
     }
-    GetCategories()
+
 }
