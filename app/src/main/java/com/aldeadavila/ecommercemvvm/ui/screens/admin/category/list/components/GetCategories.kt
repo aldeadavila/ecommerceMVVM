@@ -1,4 +1,4 @@
-package com.aldeadavila.ecommercemvvm.ui.screens.admin.category.create.components
+package com.aldeadavila.ecommercemvvm.ui.screens.admin.category.list.components
 
 import android.util.Log
 import android.widget.Toast
@@ -8,20 +8,19 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.aldeadavila.ecommercemvvm.domain.util.Resource
 import com.aldeadavila.ecommercemvvm.ui.components.ProgressBar
 import com.aldeadavila.ecommercemvvm.ui.screens.admin.category.create.AdminCategoryCreateViewModel
-import com.aldeadavila.ecommercemvvm.ui.screens.profile.update.ProfileUpdateViewModel
+import com.aldeadavila.ecommercemvvm.ui.screens.admin.category.list.AdminCategoryListViewModel
 
 @Composable
-fun CreateCategory(vm: AdminCategoryCreateViewModel = hiltViewModel()) {
+fun GetCategories(vm: AdminCategoryListViewModel = hiltViewModel()) {
 
-    when(val response = vm.categoryResponse) {
+    when(val response = vm.categoriesResponse) {
         Resource.Loading -> {
             ProgressBar()
         }
         is Resource.Succes -> {
-            /*Log.d("UpdateUser", "Data: ${response.data}")
-            vm.categoryResponse(response.data)*/
-            vm.clearForm()
-            Toast.makeText(LocalContext.current, "La categoría se ha añadido correctamente", Toast.LENGTH_LONG).show()
+            Log.d("GetCategories", "Data: ${response.data}")
+           // vm.categoryResponse(response.data)
+
         }
 
         is Resource.Failure -> {

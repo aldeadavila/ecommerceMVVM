@@ -24,9 +24,7 @@ class CategoriesRemoteDatasourceImpl(private val categoryService: CategoryServic
         return categoryService.create(fileFormData, nameData, descriptionData)
     }
 
-    override suspend fun getCategories(): Response<List<Category>> {
-        TODO("Not yet implemented")
-    }
+    override suspend fun getCategories(): Response<List<Category>> = categoryService.getCategories()
 
     override suspend fun update(id: String, category: Category): Response<Category> = categoryService.update(id, category)
     override suspend fun updateWithImage(id: String, category: Category, file: File): Response<Category> {

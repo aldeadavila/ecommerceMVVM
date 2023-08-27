@@ -62,7 +62,8 @@ class AdminCategoryCreateViewModel @Inject constructor(
     fun clearForm() {
         state = state.copy(
             name = "",
-            description = ""
+            description = "",
+            image = ""
         )
         categoryResponse = null
     }

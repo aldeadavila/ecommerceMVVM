@@ -61,10 +61,12 @@ fun AdminCategoryCreateContent(paddingValues: PaddingValues, vm: AdminCategoryCr
             AsyncImage(
                 modifier = Modifier
                     .size(150.dp)
+                    .clip(CircleShape)
                     .align(Alignment.CenterHorizontally)
                     .clickable { stateDialog.value = true },
                 model = state.image,
-                contentDescription = ""
+                contentDescription = "",
+                contentScale = ContentScale.Crop
             )
         } else {
             Image(

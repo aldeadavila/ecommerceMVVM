@@ -5,7 +5,10 @@ import com.aldeadavila.ecommercemvvm.domain.model.Category
 import com.aldeadavila.ecommercemvvm.domain.repository.CategoriesRepository
 import com.aldeadavila.ecommercemvvm.domain.util.Resource
 import com.aldeadavila.ecommercemvvm.domain.util.ResponseToRequest
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
 import java.io.File
 
 class CategoriesRespositoryImpl(private val categoriesRemoteDatasource: CategoriesRemoteDatasource): CategoriesRepository {
@@ -14,8 +17,11 @@ class CategoriesRespositoryImpl(private val categoriesRemoteDatasource: Categori
 
     )
 
-    override fun getCategories(): Flow<Resource<List<Category>>> {
-        TODO("Not yet implemented")
+    override fun getCategories(): Flow<Resource<List<Category>>> = callbackFlow {
+        trySend(ResponseToRequest.send(categoriesRemoteDatasource.getCategories()))
+        awaitClose {
+           cancel()
+        }
     }
 
     override suspend fun update(id: String, category: Category): Resource<Category> {
