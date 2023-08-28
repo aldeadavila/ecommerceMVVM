@@ -44,9 +44,7 @@ class CategoriesRemoteDatasourceImpl(private val categoryService: CategoryServic
 
     }
 
-    override suspend fun delete(id: String): Response<Unit> {
-        TODO("Not yet implemented")
-    }
+    override suspend fun delete(id: String): Response<Unit> = categoryService.delete(id)
 
 
 }

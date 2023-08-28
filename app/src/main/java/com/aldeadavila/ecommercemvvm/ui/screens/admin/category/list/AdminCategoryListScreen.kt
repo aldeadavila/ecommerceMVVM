@@ -18,6 +18,7 @@ import androidx.navigation.NavHostController
 import com.aldeadavila.ecommercemvvm.ui.components.DefaultTopBar
 import com.aldeadavila.ecommercemvvm.ui.navigation.Graph
 import com.aldeadavila.ecommercemvvm.ui.screens.admin.category.list.components.AdminScreenCategoryListContent
+import com.aldeadavila.ecommercemvvm.ui.screens.admin.category.list.components.DeleteCategory
 import com.aldeadavila.ecommercemvvm.ui.screens.admin.category.list.components.GetCategories
 import com.aldeadavila.ecommercemvvm.ui.screens.profile.components.ClientCategoryListContent
 
@@ -43,5 +44,6 @@ fun AdminCategoryListScreen(navHostController: NavHostController) {
     ){
        GetCategories(navHostController, it)
     }
+    DeleteCategory()
 
 }

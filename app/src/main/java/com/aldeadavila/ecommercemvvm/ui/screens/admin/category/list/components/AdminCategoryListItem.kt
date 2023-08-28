@@ -20,14 +20,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.aldeadavila.ecommercemvvm.R
 import com.aldeadavila.ecommercemvvm.domain.model.Category
 import com.aldeadavila.ecommercemvvm.ui.navigation.screen.admin.AdminCategoryScreen
+import com.aldeadavila.ecommercemvvm.ui.screens.admin.category.list.AdminCategoryListViewModel
 
 @Composable
-fun AdminCategoryListItem(navHostController: NavHostController, category: Category) {
+fun AdminCategoryListItem(navHostController: NavHostController, category: Category, vm: AdminCategoryListViewModel = hiltViewModel()) {
 
     Column(
         modifier = Modifier
@@ -65,13 +67,23 @@ fun AdminCategoryListItem(navHostController: NavHostController, category: Catego
                 Image(
                     modifier = Modifier
                         .size(25.dp)
-                        .clickable { navHostController.navigate(route = AdminCategoryScreen.CategoryUpdate.passCategory(category.toJson())) },
+                        .clickable {
+                            navHostController.navigate(
+                                route = AdminCategoryScreen.CategoryUpdate.passCategory(
+                                    category.toJson()
+                                )
+                            )
+                        },
                     painter = painterResource(id = R.drawable.edit),
                     contentDescription = "editar"
                 )
                 Spacer(modifier = Modifier.height(5.dp))
                 Image(
-                    modifier = Modifier.size(25.dp),
+                    modifier = Modifier
+                        .size(25.dp)
+                        .clickable {
+                            vm.deleteCategory(category.id!!)
+                        },
                     painter = painterResource(id = R.drawable.trash),
                     contentDescription = "eliminar"
                 )
