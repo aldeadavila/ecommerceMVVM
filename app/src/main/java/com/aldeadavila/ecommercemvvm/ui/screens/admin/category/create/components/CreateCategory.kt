@@ -1,6 +1,5 @@
 package com.aldeadavila.ecommercemvvm.ui.screens.admin.category.create.components
 
-import android.util.Log
 import android.widget.Toast
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
@@ -8,7 +7,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.aldeadavila.ecommercemvvm.domain.util.Resource
 import com.aldeadavila.ecommercemvvm.ui.components.ProgressBar
 import com.aldeadavila.ecommercemvvm.ui.screens.admin.category.create.AdminCategoryCreateViewModel
-import com.aldeadavila.ecommercemvvm.ui.screens.profile.update.ProfileUpdateViewModel
+import com.aldeadavila.ecommercemvvm.ui.screens.admin.category.update.AdminCategoryUpdateViewModel
 
 @Composable
 fun CreateCategory(vm: AdminCategoryCreateViewModel = hiltViewModel()) {

@@ -1,6 +1,7 @@
 package com.aldeadavila.ecommercemvvm.ui.screens.admin.category.list.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,12 +20,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.aldeadavila.ecommercemvvm.R
 import com.aldeadavila.ecommercemvvm.domain.model.Category
+import com.aldeadavila.ecommercemvvm.ui.navigation.screen.admin.AdminCategoryScreen
 
 @Composable
-fun AdminCategoryListItem(category: Category) {
+fun AdminCategoryListItem(navHostController: NavHostController, category: Category) {
 
     Column(
         modifier = Modifier
@@ -60,7 +63,9 @@ fun AdminCategoryListItem(category: Category) {
                 verticalArrangement = Arrangement.Center
             ) {
                 Image(
-                    modifier = Modifier.size(25.dp),
+                    modifier = Modifier
+                        .size(25.dp)
+                        .clickable { navHostController.navigate(route = AdminCategoryScreen.CategoryUpdate.passCategory(category.toJson())) },
                     painter = painterResource(id = R.drawable.edit),
                     contentDescription = "editar"
                 )

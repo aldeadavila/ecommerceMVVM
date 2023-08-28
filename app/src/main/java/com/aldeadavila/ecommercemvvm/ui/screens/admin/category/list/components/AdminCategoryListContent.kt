@@ -8,11 +8,12 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
 import com.aldeadavila.ecommercemvvm.domain.model.Category
 
 
 @Composable
-fun AdminScreenCategoryListContent(categories: List<Category>, paddingValues: PaddingValues) {
+fun AdminScreenCategoryListContent(navHostController: NavHostController, categories: List<Category>, paddingValues: PaddingValues) {
 
     LazyColumn (
         modifier = Modifier
@@ -22,7 +23,7 @@ fun AdminScreenCategoryListContent(categories: List<Category>, paddingValues: Pa
         items(
             items = categories
         ) {
-            AdminCategoryListItem(category = it)
+            AdminCategoryListItem(navHostController, category = it)
         }
     }
 }

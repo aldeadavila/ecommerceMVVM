@@ -1,4 +1,4 @@
-package com.aldeadavila.ecommercemvvm.ui.screens.admin.category.create.components
+package com.aldeadavila.ecommercemvvm.ui.screens.admin.category.update.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -38,7 +38,7 @@ import com.aldeadavila.ecommercemvvm.ui.components.DialagoCapturePicture
 import com.aldeadavila.ecommercemvvm.ui.screens.admin.category.update.AdminCategoryUpdateViewModel
 
 @Composable
-fun AdminCategoryCreateContent(paddingValues: PaddingValues, vm: AdminCategoryUpdateViewModel = hiltViewModel()) {
+fun AdminCategoryUpdateContent(paddingValues: PaddingValues, vm: AdminCategoryUpdateViewModel = hiltViewModel()) {
 
     val state = vm.state
     vm.resultingActivityHandler.handle()
@@ -128,7 +128,7 @@ fun AdminCategoryCreateContent(paddingValues: PaddingValues, vm: AdminCategoryUp
             DefaultButton(modifier = Modifier
                 .height(40.dp)
                 .fillMaxWidth(),
-                text = "Crear Categoría",
+                text = "Actualizar Categoría",
                 onClick = {
                     vm.createCategory()
                 }

@@ -41,7 +41,7 @@ fun AdminCategoryListScreen(navHostController: NavHostController) {
            }
        }
     ){
-       GetCategories(it)
+       GetCategories(navHostController, it)
     }
 
 }
