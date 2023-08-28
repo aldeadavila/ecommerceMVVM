@@ -70,6 +70,21 @@ fun ProfileContent(paddingValues: PaddingValues, navvHostController: NavHostCont
                     activity?.finish()
                     activity?.startActivity(Intent(activity, MainActivity::class.java))
                 }) {
+                Image(
+                    modifier = Modifier.size(35.dp),
+                    painter = painterResource(id = R.drawable.logout),
+                    contentDescription = ""
+                )
+
+            }
+            IconButton(
+                modifier = Modifier
+                    .align(Alignment.End)
+                    .padding(end = 15.dp, top = 15.dp),
+                onClick = {
+                    activity?.finish()
+                    activity?.startActivity(Intent(activity, MainActivity::class.java))
+                }) {
                 Icon(
                     modifier = Modifier.size(35.dp),
                     imageVector = Icons.Default.ExitToApp,
