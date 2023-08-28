@@ -1,11 +1,11 @@
 package com.aldeadavila.ecommercemvvm.di
 
-import com.aldeadavila.ecommercemvvm.data.datastore.AuthDataStore
-import com.aldeadavila.ecommercemvvm.data.repository.datasource.AuthLocalDataSource
-import com.aldeadavila.ecommercemvvm.data.repository.datasource.AuthRemoteDatasource
-import com.aldeadavila.ecommercemvvm.data.repository.datasourceimpl.AuthLocalDataSourceImpl
-import com.aldeadavila.ecommercemvvm.data.repository.datasourceimpl.AuthRemoteDatasourceImpl
-import com.aldeadavila.ecommercemvvm.data.service.AuthService
+import com.aldeadavila.ecommercemvvm.data.datasource.local.datastore.AuthDataStore
+import com.aldeadavila.ecommercemvvm.data.datasource.local.AuthLocalDataSource
+import com.aldeadavila.ecommercemvvm.data.datasource.local.AuthLocalDataSourceImpl
+import com.aldeadavila.ecommercemvvm.data.datasource.local.CategoriesLocalDataSource
+import com.aldeadavila.ecommercemvvm.data.datasource.local.CategoriesLocalDataSourceImpl
+import com.aldeadavila.ecommercemvvm.data.datasource.local.dao.CategoriesDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,4 +17,7 @@ object LocalDataModule {
 
     @Provides
     fun provideAuthLocalDataSource(authDataStore: AuthDataStore): AuthLocalDataSource = AuthLocalDataSourceImpl(authDataStore)
+
+    @Provides
+    fun provideCategoriesLocalDataSource(categoriesDao: CategoriesDao): CategoriesLocalDataSource = CategoriesLocalDataSourceImpl(categoriesDao)
 }

@@ -1,17 +1,13 @@
 package com.aldeadavila.ecommercemvvm.data.repository
 
-import com.aldeadavila.ecommercemvvm.data.repository.datasource.AuthLocalDataSource
-import com.aldeadavila.ecommercemvvm.data.repository.datasource.AuthRemoteDatasource
+import com.aldeadavila.ecommercemvvm.data.datasource.local.AuthLocalDataSource
+import com.aldeadavila.ecommercemvvm.data.datasource.remote.AuthRemoteDatasource
 import com.aldeadavila.ecommercemvvm.domain.model.AuthResponse
-import com.aldeadavila.ecommercemvvm.domain.model.ErrorResponse
 import com.aldeadavila.ecommercemvvm.domain.model.User
 import com.aldeadavila.ecommercemvvm.domain.repository.AuthRepository
-import com.aldeadavila.ecommercemvvm.domain.util.ConvertErrorBody
 import com.aldeadavila.ecommercemvvm.domain.util.Resource
 import com.aldeadavila.ecommercemvvm.domain.util.ResponseToRequest
 import kotlinx.coroutines.flow.Flow
-import retrofit2.HttpException
-import java.io.IOException
 
 class AuthRepositoryImpl(
     private val authRemoteDatasource: AuthRemoteDatasource,

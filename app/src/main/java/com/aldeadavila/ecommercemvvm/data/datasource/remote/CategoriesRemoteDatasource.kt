@@ -1,4 +1,4 @@
-package com.aldeadavila.ecommercemvvm.data.repository.datasource
+package com.aldeadavila.ecommercemvvm.data.datasource.remote
 
 import com.aldeadavila.ecommercemvvm.domain.model.Category
 import retrofit2.Response

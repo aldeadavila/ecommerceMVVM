@@ -1,8 +1,8 @@
-package com.aldeadavila.ecommercemvvm.data.repository.datasourceimpl
+package com.aldeadavila.ecommercemvvm.data.datasource.remote
 
 import android.util.Log
-import com.aldeadavila.ecommercemvvm.data.repository.datasource.CategoriesRemoteDatasource
-import com.aldeadavila.ecommercemvvm.data.service.CategoryService
+import com.aldeadavila.ecommercemvvm.data.datasource.remote.CategoriesRemoteDatasource
+import com.aldeadavila.ecommercemvvm.data.datasource.remote.service.CategoryService
 import com.aldeadavila.ecommercemvvm.domain.model.Category
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody

@@ -1,4 +1,4 @@
-package com.aldeadavila.ecommercemvvm.data.service
+package com.aldeadavila.ecommercemvvm.data.datasource.remote.service
 
 import com.aldeadavila.ecommercemvvm.domain.model.Category
 import okhttp3.MultipartBody

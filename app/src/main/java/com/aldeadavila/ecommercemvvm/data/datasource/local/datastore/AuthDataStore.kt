@@ -1,4 +1,4 @@
-package com.aldeadavila.ecommercemvvm.data.datastore
+package com.aldeadavila.ecommercemvvm.data.datasource.local.datastore
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences

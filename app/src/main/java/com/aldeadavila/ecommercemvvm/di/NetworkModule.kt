@@ -1,10 +1,10 @@
 package com.aldeadavila.ecommercemvvm.di
 
 import com.aldeadavila.ecommercemvvm.core.Config.BASE_URL
-import com.aldeadavila.ecommercemvvm.data.datastore.AuthDataStore
-import com.aldeadavila.ecommercemvvm.data.service.AuthService
-import com.aldeadavila.ecommercemvvm.data.service.CategoryService
-import com.aldeadavila.ecommercemvvm.data.service.UserService
+import com.aldeadavila.ecommercemvvm.data.datasource.local.datastore.AuthDataStore
+import com.aldeadavila.ecommercemvvm.data.datasource.remote.service.AuthService
+import com.aldeadavila.ecommercemvvm.data.datasource.remote.service.CategoryService
+import com.aldeadavila.ecommercemvvm.data.datasource.remote.service.UserService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

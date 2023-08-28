@@ -1,9 +1,8 @@
-package com.aldeadavila.ecommercemvvm.data.repository.datasourceimpl
+package com.aldeadavila.ecommercemvvm.data.datasource.remote
 
-import com.aldeadavila.ecommercemvvm.data.repository.datasource.UsersRemoteDatasource
-import com.aldeadavila.ecommercemvvm.data.service.UserService
+import com.aldeadavila.ecommercemvvm.data.datasource.remote.UsersRemoteDatasource
+import com.aldeadavila.ecommercemvvm.data.datasource.remote.service.UserService
 import com.aldeadavila.ecommercemvvm.domain.model.User
-import com.aldeadavila.ecommercemvvm.domain.util.Resource
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody

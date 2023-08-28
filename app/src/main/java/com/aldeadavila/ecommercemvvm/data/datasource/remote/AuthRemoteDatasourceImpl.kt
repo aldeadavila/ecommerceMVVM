@@ -1,7 +1,7 @@
-package com.aldeadavila.ecommercemvvm.data.repository.datasourceimpl
+package com.aldeadavila.ecommercemvvm.data.datasource.remote
 
-import com.aldeadavila.ecommercemvvm.data.repository.datasource.AuthRemoteDatasource
-import com.aldeadavila.ecommercemvvm.data.service.AuthService
+import com.aldeadavila.ecommercemvvm.data.datasource.remote.AuthRemoteDatasource
+import com.aldeadavila.ecommercemvvm.data.datasource.remote.service.AuthService
 import com.aldeadavila.ecommercemvvm.domain.model.AuthResponse
 import com.aldeadavila.ecommercemvvm.domain.model.User
 import retrofit2.Response

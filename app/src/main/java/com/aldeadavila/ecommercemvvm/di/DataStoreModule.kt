@@ -6,7 +6,7 @@ import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStoreFile
 import com.aldeadavila.ecommercemvvm.core.Config
-import com.aldeadavila.ecommercemvvm.data.datastore.AuthDataStore
+import com.aldeadavila.ecommercemvvm.data.datasource.local.datastore.AuthDataStore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

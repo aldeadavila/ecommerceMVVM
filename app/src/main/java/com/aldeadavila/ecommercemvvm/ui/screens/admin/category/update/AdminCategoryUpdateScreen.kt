@@ -11,7 +11,7 @@ import com.aldeadavila.ecommercemvvm.ui.theme.Gray200
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AdminCategoryUpdateScreen(navHostController: NavHostController, categoryParam: String) {
+fun AdminCategoryUpdateScreen(navHostController: NavHostController) {
     Scaffold (
         topBar = {
             DefaultTopBar(

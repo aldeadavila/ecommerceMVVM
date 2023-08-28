@@ -3,10 +3,11 @@ package com.aldeadavila.ecommercemvvm.di
 import com.aldeadavila.ecommercemvvm.data.repository.AuthRepositoryImpl
 import com.aldeadavila.ecommercemvvm.data.repository.CategoriesRespositoryImpl
 import com.aldeadavila.ecommercemvvm.data.repository.UsersRepositoryImpl
-import com.aldeadavila.ecommercemvvm.data.repository.datasource.AuthLocalDataSource
-import com.aldeadavila.ecommercemvvm.data.repository.datasource.AuthRemoteDatasource
-import com.aldeadavila.ecommercemvvm.data.repository.datasource.CategoriesRemoteDatasource
-import com.aldeadavila.ecommercemvvm.data.repository.datasource.UsersRemoteDatasource
+import com.aldeadavila.ecommercemvvm.data.datasource.local.AuthLocalDataSource
+import com.aldeadavila.ecommercemvvm.data.datasource.local.CategoriesLocalDataSource
+import com.aldeadavila.ecommercemvvm.data.datasource.remote.AuthRemoteDatasource
+import com.aldeadavila.ecommercemvvm.data.datasource.remote.CategoriesRemoteDatasource
+import com.aldeadavila.ecommercemvvm.data.datasource.remote.UsersRemoteDatasource
 import com.aldeadavila.ecommercemvvm.domain.repository.AuthRepository
 import com.aldeadavila.ecommercemvvm.domain.repository.CategoriesRepository
 import com.aldeadavila.ecommercemvvm.domain.repository.UsersRepository
@@ -32,6 +33,7 @@ object RepositoryModule {
 
     @Provides
     fun provideCategoryRepository(
-        categoriesRemoteDatasource: CategoriesRemoteDatasource
-    ): CategoriesRepository = CategoriesRespositoryImpl(categoriesRemoteDatasource)
+        categoriesRemoteDatasource: CategoriesRemoteDatasource,
+        categoriesLocalDataSource: CategoriesLocalDataSource
+    ): CategoriesRepository = CategoriesRespositoryImpl(categoriesRemoteDatasource, categoriesLocalDataSource)
 }

@@ -1,4 +1,4 @@
-package com.aldeadavila.ecommercemvvm.data.repository.datasource
+package com.aldeadavila.ecommercemvvm.data.datasource.local
 
 import com.aldeadavila.ecommercemvvm.domain.model.AuthResponse
 import com.aldeadavila.ecommercemvvm.domain.model.User

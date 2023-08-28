@@ -1,6 +1,6 @@
 package com.aldeadavila.ecommercemvvm.data.repository
 
-import com.aldeadavila.ecommercemvvm.data.repository.datasource.UsersRemoteDatasource
+import com.aldeadavila.ecommercemvvm.data.datasource.remote.UsersRemoteDatasource
 import com.aldeadavila.ecommercemvvm.domain.model.User
 import com.aldeadavila.ecommercemvvm.domain.repository.UsersRepository
 import com.aldeadavila.ecommercemvvm.domain.util.Resource

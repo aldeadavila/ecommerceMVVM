@@ -1,8 +1,5 @@
 package com.aldeadavila.ecommercemvvm.di
 
-import com.aldeadavila.ecommercemvvm.data.repository.datasource.AuthRemoteDatasource
-import com.aldeadavila.ecommercemvvm.data.repository.datasourceimpl.AuthRemoteDatasourceImpl
-import com.aldeadavila.ecommercemvvm.data.service.AuthService
 import com.aldeadavila.ecommercemvvm.domain.repository.AuthRepository
 import com.aldeadavila.ecommercemvvm.domain.repository.CategoriesRepository
 import com.aldeadavila.ecommercemvvm.domain.repository.UsersRepository

@@ -1,14 +1,14 @@
 package com.aldeadavila.ecommercemvvm.di
 
-import com.aldeadavila.ecommercemvvm.data.repository.datasource.AuthRemoteDatasource
-import com.aldeadavila.ecommercemvvm.data.repository.datasource.CategoriesRemoteDatasource
-import com.aldeadavila.ecommercemvvm.data.repository.datasource.UsersRemoteDatasource
-import com.aldeadavila.ecommercemvvm.data.repository.datasourceimpl.AuthRemoteDatasourceImpl
-import com.aldeadavila.ecommercemvvm.data.repository.datasourceimpl.CategoriesRemoteDatasourceImpl
-import com.aldeadavila.ecommercemvvm.data.repository.datasourceimpl.UsersRemoteDatasourceImpl
-import com.aldeadavila.ecommercemvvm.data.service.AuthService
-import com.aldeadavila.ecommercemvvm.data.service.CategoryService
-import com.aldeadavila.ecommercemvvm.data.service.UserService
+import com.aldeadavila.ecommercemvvm.data.datasource.remote.AuthRemoteDatasource
+import com.aldeadavila.ecommercemvvm.data.datasource.remote.CategoriesRemoteDatasource
+import com.aldeadavila.ecommercemvvm.data.datasource.remote.UsersRemoteDatasource
+import com.aldeadavila.ecommercemvvm.data.datasource.remote.AuthRemoteDatasourceImpl
+import com.aldeadavila.ecommercemvvm.data.datasource.remote.CategoriesRemoteDatasourceImpl
+import com.aldeadavila.ecommercemvvm.data.datasource.remote.UsersRemoteDatasourceImpl
+import com.aldeadavila.ecommercemvvm.data.datasource.remote.service.AuthService
+import com.aldeadavila.ecommercemvvm.data.datasource.remote.service.CategoryService
+import com.aldeadavila.ecommercemvvm.data.datasource.remote.service.UserService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
