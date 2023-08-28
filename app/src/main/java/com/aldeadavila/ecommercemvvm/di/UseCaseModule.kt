@@ -16,6 +16,8 @@ import com.aldeadavila.ecommercemvvm.domain.usecase.auth.UpdateSessionUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.categories.CategoriesUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.categories.CreateCategoryUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.categories.GetCategoryUseCase
+import com.aldeadavila.ecommercemvvm.domain.usecase.categories.UpdateCategoryUseCase
+import com.aldeadavila.ecommercemvvm.domain.usecase.categories.UpdateCategoryWithImageUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.users.UpdateUserUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.users.UpdateUserWithImageUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.users.UsersUseCase
@@ -48,6 +50,8 @@ object UseCaseModule {
     @Provides
     fun provideCategoriesUseCase(categoriesRepository: CategoriesRepository) = CategoriesUseCase(
         createCategory= CreateCategoryUseCase(categoriesRepository),
-        getCategories = GetCategoryUseCase(categoriesRepository)
+        getCategories = GetCategoryUseCase(categoriesRepository),
+        updateCategory = UpdateCategoryUseCase(categoriesRepository),
+        updateCategoryWithImage = UpdateCategoryWithImageUseCase(categoriesRepository)
     )
 }

@@ -130,7 +130,7 @@ fun AdminCategoryUpdateContent(paddingValues: PaddingValues, vm: AdminCategoryUp
                 .fillMaxWidth(),
                 text = "Actualizar Categoría",
                 onClick = {
-                    vm.createCategory()
+                    vm.onUpdate()
                 }
             )
         }

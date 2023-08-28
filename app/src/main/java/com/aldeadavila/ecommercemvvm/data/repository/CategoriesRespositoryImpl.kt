@@ -24,17 +24,17 @@ class CategoriesRespositoryImpl(private val categoriesRemoteDatasource: Categori
         }
     }
 
-    override suspend fun update(id: String, category: Category): Resource<Category> {
-        TODO("Not yet implemented")
-    }
+    override suspend fun update(id: String, category: Category): Resource<Category> = ResponseToRequest.send(
+        categoriesRemoteDatasource.update(id, category)
+    )
 
     override suspend fun updateWithImage(
         id: String,
         category: Category,
         file: File
-    ): Resource<Category> {
-        TODO("Not yet implemented")
-    }
+    ): Resource<Category> = ResponseToRequest.send(
+        categoriesRemoteDatasource.updateWithImage(id, category, file)
+    )
 
     override suspend fun delete(id: String): Resource<Unit> {
         TODO("Not yet implemented")

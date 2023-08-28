@@ -1,5 +1,6 @@
 package com.aldeadavila.ecommercemvvm.data.repository.datasourceimpl
 
+import android.util.Log
 import com.aldeadavila.ecommercemvvm.data.repository.datasource.CategoriesRemoteDatasource
 import com.aldeadavila.ecommercemvvm.data.service.CategoryService
 import com.aldeadavila.ecommercemvvm.domain.model.Category
@@ -29,17 +30,18 @@ class CategoriesRemoteDatasourceImpl(private val categoryService: CategoryServic
     override suspend fun update(id: String, category: Category): Response<Category> = categoryService.update(id, category)
     override suspend fun updateWithImage(id: String, category: Category, file: File): Response<Category> {
 
-        /*val connection = file.toURI().toURL().openConnection()
+        val connection = file.toURI().toURL().openConnection()
         val mimeType = connection.contentType // para saber el tipo del archivo
         val contentType = "text/plain"
         val requestFile = file.asRequestBody(mimeType.toMediaTypeOrNull())
         val fileFormData = MultipartBody.Part.createFormData("file", file.name, requestFile)
-        val nameData = user.name.toRequestBody(contentType.toMediaTypeOrNull())
-        val lastnameData = user.lastname.toRequestBody(contentType.toMediaTypeOrNull())
-        val phoneData = user.phone.toRequestBody(contentType.toMediaTypeOrNull())
+        val nameData = category.name.toRequestBody(contentType.toMediaTypeOrNull())
+        val descriptionData = category.description.toRequestBody(contentType.toMediaTypeOrNull())
 
-        return userService.updateWithImage(fileFormData, id, nameData, lastnameData, phoneData)*/
-        TODO("Not yet implemented")
+
+        Log.d("CategoriesRemoteDatasourceImpl", "fileFormData ${fileFormData} id ${id} nameData ${nameData} descriptionData ${descriptionData}")
+        return categoryService.updateWithImage(fileFormData, id, nameData, descriptionData)
+
     }
 
     override suspend fun delete(id: String): Response<Unit> {

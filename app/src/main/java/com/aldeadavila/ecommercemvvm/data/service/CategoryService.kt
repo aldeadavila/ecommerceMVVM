@@ -34,12 +34,12 @@ interface CategoryService {
     ): Response<Category>
 
     @Multipart
-    @PUT("categories/{id}")
+    @PUT("categories/upload/{id}")
     suspend fun updateWithImage(
         @Part file: MultipartBody.Part,
         @Path("id") id: String,
-        @Part name: RequestBody,
-        @Part description: RequestBody
+        @Part("name") name: RequestBody,
+        @Part("description") description: RequestBody
     ): Response<Category>
 
     @DELETE("categories/{id}")

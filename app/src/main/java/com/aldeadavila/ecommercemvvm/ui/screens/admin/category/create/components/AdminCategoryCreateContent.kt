@@ -35,10 +35,10 @@ import com.aldeadavila.ecommercemvvm.R
 import com.aldeadavila.ecommercemvvm.ui.components.DefaultButton
 import com.aldeadavila.ecommercemvvm.ui.components.DefaultTextField
 import com.aldeadavila.ecommercemvvm.ui.components.DialagoCapturePicture
-import com.aldeadavila.ecommercemvvm.ui.screens.admin.category.update.AdminCategoryUpdateViewModel
+import com.aldeadavila.ecommercemvvm.ui.screens.admin.category.create.AdminCategoryCreateViewModel
 
 @Composable
-fun AdminCategoryCreateContent(paddingValues: PaddingValues, vm: AdminCategoryUpdateViewModel = hiltViewModel()) {
+fun AdminCategoryCreateContent(paddingValues: PaddingValues, vm: AdminCategoryCreateViewModel = hiltViewModel()) {
 
     val state = vm.state
     vm.resultingActivityHandler.handle()
