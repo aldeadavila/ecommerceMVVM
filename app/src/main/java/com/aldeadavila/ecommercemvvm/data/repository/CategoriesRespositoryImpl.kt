@@ -1,6 +1,7 @@
 package com.aldeadavila.ecommercemvvm.data.repository
 
 import com.aldeadavila.ecommercemvvm.data.datasource.local.CategoriesLocalDataSource
+import com.aldeadavila.ecommercemvvm.data.datasource.local.entity.CategoryEntity
 import com.aldeadavila.ecommercemvvm.data.datasource.remote.CategoriesRemoteDatasource
 import com.aldeadavila.ecommercemvvm.data.mapper.toCategory
 import com.aldeadavila.ecommercemvvm.data.mapper.toCategoryEntity
@@ -8,6 +9,7 @@ import com.aldeadavila.ecommercemvvm.domain.model.Category
 import com.aldeadavila.ecommercemvvm.domain.repository.CategoriesRepository
 import com.aldeadavila.ecommercemvvm.domain.util.Resource
 import com.aldeadavila.ecommercemvvm.domain.util.ResponseToRequest
+import com.aldeadavila.ecommercemvvm.domain.util.isListEqual
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.channels.awaitClose
@@ -31,19 +33,34 @@ class CategoriesRespositoryImpl(
 
         localDataSource.getCategories().collect() {
             it.run {
-                if (this.isNotEmpty()) {
+                /*if (this.isNotEmpty()) {
                     emit(Resource.Succes(this.map{ categoryEntity -> categoryEntity.toCategory()  }))
-                }
-                else {
+                }*/
+                val categoryLocalMap = this.map { categoryEntity -> categoryEntity.toCategory() }
+                try {
+
                     ResponseToRequest.send(remoteDatasource.getCategories()).run {
                         when(this) {
                             is Resource.Succes -> {
-                                localDataSource.insertAll(this.data.map { category ->  category.toCategoryEntity()})
-                                emit(Resource.Succes(this.data))
+                                val categoriesRemote = this.data
+
+                                if (!isListEqual( categoriesRemote,categoryLocalMap)) {
+                                    localDataSource.insertAll(categoriesRemote.map { category ->  category.toCategoryEntity()})
+                                }
+
+                                emit(Resource.Succes(categoriesRemote))
                             }
-                            else -> {}
+                            is Resource.Failure -> {
+                                emit(Resource.Succes(categoryLocalMap))
+                            }
+                            else -> {
+                                emit(Resource.Succes(categoryLocalMap))
+                            }
                         }
                     }
+
+                } catch (e: Exception) {
+                    emit(Resource.Succes(categoryLocalMap))
                 }
             }
         }
@@ -75,11 +92,27 @@ class CategoriesRespositoryImpl(
         id: String,
         category: Category,
         file: File
-    ): Resource<Category> = ResponseToRequest.send(
-        remoteDatasource.updateWithImage(id, category, file)
-    )
+    ): Resource<Category> {
+        ResponseToRequest.send(remoteDatasource.updateWithImage(id, category, file)).run {
+            return when(this) {
+                is Resource.Succes -> {
+                    localDataSource.update(
+                        id = this.data.id ?: "",
+                        name = this.data.name,
+                        description = this.data.description,
+                        image = this.data.image ?: ""
+                    )
+                    Resource.Succes(this.data)
+                }
+                else -> {
+                    Resource.Failure("Error desconocido")
+                }
+            }
+        }
+    }
 
     override suspend fun delete(id: String): Resource<Unit> {
         TODO("Not yet implemented")
     }
+
 }

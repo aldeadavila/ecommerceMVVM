@@ -53,7 +53,7 @@ fun AdminCategoryListItem(navHostController: NavHostController, category: Catego
                 )
                 Spacer(modifier = Modifier.height(5.dp))
                 Text(
-                    text = category.name,
+                    text = category.description,
                     color = Color.Gray,
                     fontSize = 14.sp
                 )
