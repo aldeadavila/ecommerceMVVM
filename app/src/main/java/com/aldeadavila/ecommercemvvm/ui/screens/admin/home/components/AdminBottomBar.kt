@@ -11,7 +11,7 @@ import com.aldeadavila.ecommercemvvm.ui.navigation.screen.admin.AdminScreen
 fun AdminBottomBar(navHostController: NavHostController) {
 
     val screens = listOf(
-        AdminScreen.ProductList,
+       // AdminScreen.ProductList,
         AdminScreen.CategoryList,
         AdminScreen.Profile
     )

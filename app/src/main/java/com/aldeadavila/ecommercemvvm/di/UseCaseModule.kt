@@ -2,6 +2,7 @@ package com.aldeadavila.ecommercemvvm.di
 
 import com.aldeadavila.ecommercemvvm.domain.repository.AuthRepository
 import com.aldeadavila.ecommercemvvm.domain.repository.CategoriesRepository
+import com.aldeadavila.ecommercemvvm.domain.repository.ProductsRepository
 import com.aldeadavila.ecommercemvvm.domain.repository.UsersRepository
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.AuthUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.auth.GetSessionDataUseCase
@@ -16,6 +17,8 @@ import com.aldeadavila.ecommercemvvm.domain.usecase.categories.DeleteCategoryUse
 import com.aldeadavila.ecommercemvvm.domain.usecase.categories.GetCategoryUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.categories.UpdateCategoryUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.categories.UpdateCategoryWithImageUseCase
+import com.aldeadavila.ecommercemvvm.domain.usecase.products.CreateProductUseCase
+import com.aldeadavila.ecommercemvvm.domain.usecase.products.ProductsUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.users.UpdateUserUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.users.UpdateUserWithImageUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.users.UsersUseCase
@@ -52,5 +55,11 @@ object UseCaseModule {
         updateCategory = UpdateCategoryUseCase(categoriesRepository),
         updateCategoryWithImage = UpdateCategoryWithImageUseCase(categoriesRepository),
         deleteCategoryUseCase = DeleteCategoryUseCase(categoriesRepository)
+    )
+
+    @Provides
+    fun provideProductsUseCase(productsRepository: ProductsRepository) = ProductsUseCase(
+        createProduct = CreateProductUseCase(productsRepository)
+
     )
 }

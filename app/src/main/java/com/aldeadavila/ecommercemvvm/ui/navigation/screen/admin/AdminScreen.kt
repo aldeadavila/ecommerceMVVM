@@ -17,11 +17,11 @@ sealed class AdminScreen(
         icon = Icons.Default.List
     )
 
-    object ProductList: AdminScreen(
+   /* object ProductList: AdminScreen(
         route = "admin/product/list",
         title = "Productos",
         icon = Icons.Default.ThumbUp
-    )
+    )*/
 
     object Profile: AdminScreen(
         route = "admin/profile",

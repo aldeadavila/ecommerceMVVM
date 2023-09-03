@@ -15,11 +15,11 @@ import com.aldeadavila.ecommercemvvm.ui.screens.profile.info.ProfileScreen
 fun AdminNavGraph(navController: NavHostController) {
     NavHost(navController = navController,
         route = Graph.ADMIN,
-        startDestination = AdminScreen.ProductList.route
+        startDestination = AdminScreen.CategoryList.route
     ) {
-        composable(route = AdminScreen.ProductList.route) {
+       /* composable(route = AdminScreen.ProductList.route) {
             AdminProductListScreen()
-        }
+        }*/
 
         composable(route = AdminScreen.CategoryList.route) {
             AdminCategoryListScreen(navController)

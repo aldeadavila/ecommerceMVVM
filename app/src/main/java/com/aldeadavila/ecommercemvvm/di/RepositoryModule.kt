@@ -7,9 +7,12 @@ import com.aldeadavila.ecommercemvvm.data.datasource.local.AuthLocalDataSource
 import com.aldeadavila.ecommercemvvm.data.datasource.local.CategoriesLocalDataSource
 import com.aldeadavila.ecommercemvvm.data.datasource.remote.AuthRemoteDatasource
 import com.aldeadavila.ecommercemvvm.data.datasource.remote.CategoriesRemoteDatasource
+import com.aldeadavila.ecommercemvvm.data.datasource.remote.ProductsRemoteDataSource
 import com.aldeadavila.ecommercemvvm.data.datasource.remote.UsersRemoteDatasource
+import com.aldeadavila.ecommercemvvm.data.repository.ProductsRepositoryImpl
 import com.aldeadavila.ecommercemvvm.domain.repository.AuthRepository
 import com.aldeadavila.ecommercemvvm.domain.repository.CategoriesRepository
+import com.aldeadavila.ecommercemvvm.domain.repository.ProductsRepository
 import com.aldeadavila.ecommercemvvm.domain.repository.UsersRepository
 import dagger.Module
 import dagger.Provides
@@ -36,4 +39,9 @@ object RepositoryModule {
         categoriesRemoteDatasource: CategoriesRemoteDatasource,
         categoriesLocalDataSource: CategoriesLocalDataSource
     ): CategoriesRepository = CategoriesRespositoryImpl(categoriesRemoteDatasource, categoriesLocalDataSource)
+
+    @Provides
+    fun provideProductsRepository(
+        productsRemoteDataSource: ProductsRemoteDataSource
+    ): ProductsRepository = ProductsRepositoryImpl(productsRemoteDataSource)
 }
