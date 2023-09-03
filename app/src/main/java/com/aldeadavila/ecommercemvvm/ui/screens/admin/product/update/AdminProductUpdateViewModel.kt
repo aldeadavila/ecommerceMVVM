@@ -1,4 +1,4 @@
-package com.aldeadavila.ecommercemvvm.ui.screens.admin.product.create
+package com.aldeadavila.ecommercemvvm.ui.screens.admin.product.update
 
 import android.content.Context
 import androidx.compose.runtime.getValue
@@ -21,7 +21,7 @@ import java.io.File
 import javax.inject.Inject
 
 @HiltViewModel
-class AdminProductCreateViewModel @Inject constructor(
+class AdminProductUpdateViewModel @Inject constructor(
     @ApplicationContext val context: Context,
     private val savedStateHandle: SavedStateHandle,
     private val productUseCase: ProductsUseCase
@@ -32,8 +32,8 @@ class AdminProductCreateViewModel @Inject constructor(
 
     var productResponse by mutableStateOf<Resource<Product>?>(null)
 
-    var data = savedStateHandle.get<String>("category")
-    var category = Category.fromJson(data!!)
+    var data = savedStateHandle.get<String>("product")
+    var product = Product.fromJson(data!!)
 
     //imagenes
     var file1: File? = null
@@ -42,15 +42,23 @@ class AdminProductCreateViewModel @Inject constructor(
     val resultingActivityHandler = ResultingActivityHandler()
 
     init {
-        state = state.copy(idCategory = category.id ?: "")
+        state = state.copy(
+            id = product.id  ?: "",
+            name = product.name,
+            description = product.description,
+            price = product.price,
+            idCategory = product.idCategory,
+            image1 = product.image1  ?: "",
+            image2 = product.image2  ?: "",
+        )
     }
 
     fun createProduct() = viewModelScope.launch {
         if(file1 != null && file2 != null) {
             files = listOf(file1!!, file2!!)
             productResponse = Resource.Loading
-            val result = productUseCase.createProduct(state.toProduct(), files)
-            productResponse = result
+         //   val result = productUseCase.createProduct(state.toProduct(), files)
+          //  productResponse = result
         }
 
     }
@@ -81,17 +89,6 @@ class AdminProductCreateViewModel @Inject constructor(
             }
 
         }
-    }
-
-    fun clearForm() {
-        state = state.copy(
-            name = "",
-            description = "",
-            image1 = "",
-            image2 = "",
-            price = 0.0,
-        )
-        productResponse = null
     }
 
     fun onNameInput(input: String) {

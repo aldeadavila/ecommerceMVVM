@@ -1,11 +1,13 @@
-package com.aldeadavila.ecommercemvvm.ui.screens.admin.product.create
+package com.aldeadavila.ecommercemvvm.ui.screens.admin.product.update
 
-data class AdminProductCreateState(
+data class AdminProductUpdateState(
 
+    val id: String = "",
     val name: String = "",
     val description: String = "",
     val idCategory: String = "",
     val image1: String = "",
     val image2: String = "",
     val price: Double = 0.0,
+    val imageToUpdate: List<Int> = listOf()
 )

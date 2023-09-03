@@ -12,6 +12,7 @@ import com.aldeadavila.ecommercemvvm.ui.screens.admin.category.update.AdminCateg
 import com.aldeadavila.ecommercemvvm.ui.screens.admin.category.create.AdminCategoryCreateScreen
 import com.aldeadavila.ecommercemvvm.ui.screens.admin.product.create.AdminProductCreateScreen
 import com.aldeadavila.ecommercemvvm.ui.screens.admin.product.list.AdminProductListScreen
+import com.aldeadavila.ecommercemvvm.ui.screens.admin.product.update.AdminProductUpdateScreen
 
 fun NavGraphBuilder.AdminCategoryNavGraph(navHostController: NavHostController) {
     navigation(
@@ -53,6 +54,17 @@ fun NavGraphBuilder.AdminCategoryNavGraph(navHostController: NavHostController) 
         ) {
             it.arguments?.getString("category")?.let {
                 AdminProductCreateScreen(navHostController, it)
+            }
+        }
+
+        composable(
+            route = AdminCategoryScreen.ProductUpdate.route,
+            arguments = listOf(navArgument("product") {
+                type = NavType.StringType
+            })
+        ) {
+            it.arguments?.getString("product")?.let {
+                AdminProductUpdateScreen(navHostController, it)
             }
         }
 
