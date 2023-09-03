@@ -1,0 +1,39 @@
+package com.aldeadavila.ecommercemvvm.ui.screens.admin.product.list
+
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.aldeadavila.ecommercemvvm.domain.model.Category
+import com.aldeadavila.ecommercemvvm.domain.model.Product
+import com.aldeadavila.ecommercemvvm.domain.usecase.products.ProductsUseCase
+import com.aldeadavila.ecommercemvvm.domain.util.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
+
+@HiltViewModel
+class AdminProductListViewModel @Inject constructor(
+    private val productsUseCase: ProductsUseCase,
+    private val savedStateHandle: SavedStateHandle,
+    ): ViewModel() {
+
+    var data = savedStateHandle.get<String>("category")
+    var category = Category.fromJson(data!!)
+
+    var productResponse by mutableStateOf<Resource<List<Product>>?>(null)
+        private set
+
+    init {
+        getProducts()
+    }
+
+    private fun getProducts() = viewModelScope.launch {
+        productResponse = Resource.Loading
+        productsUseCase.findByCategory(category.id!!).collect(){
+            productResponse = it
+        }
+    }
+}

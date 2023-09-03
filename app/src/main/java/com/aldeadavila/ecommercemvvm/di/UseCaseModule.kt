@@ -18,6 +18,7 @@ import com.aldeadavila.ecommercemvvm.domain.usecase.categories.GetCategoryUseCas
 import com.aldeadavila.ecommercemvvm.domain.usecase.categories.UpdateCategoryUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.categories.UpdateCategoryWithImageUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.products.CreateProductUseCase
+import com.aldeadavila.ecommercemvvm.domain.usecase.products.FindByCategoryUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.products.ProductsUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.users.UpdateUserUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.users.UpdateUserWithImageUseCase
@@ -59,7 +60,8 @@ object UseCaseModule {
 
     @Provides
     fun provideProductsUseCase(productsRepository: ProductsRepository) = ProductsUseCase(
-        createProduct = CreateProductUseCase(productsRepository)
+        createProduct = CreateProductUseCase(productsRepository),
+        findByCategory = FindByCategoryUseCase(productsRepository)
 
     )
 }

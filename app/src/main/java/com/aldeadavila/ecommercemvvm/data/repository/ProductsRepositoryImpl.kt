@@ -6,6 +6,7 @@ import com.aldeadavila.ecommercemvvm.domain.repository.ProductsRepository
 import com.aldeadavila.ecommercemvvm.domain.util.Resource
 import com.aldeadavila.ecommercemvvm.domain.util.ResponseToRequest
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import java.io.File
 
 class ProductsRepositoryImpl(private val productsRemoteDataSource: ProductsRemoteDataSource):ProductsRepository {
@@ -13,9 +14,12 @@ class ProductsRepositoryImpl(private val productsRemoteDataSource: ProductsRemot
         TODO("Not yet implemented")
     }
 
-    override fun findByCategory(idCategory: String): Flow<Resource<List<Product>>> {
-        TODO("Not yet implemented")
+    override fun findByCategory(idCategory: String): Flow<Resource<List<Product>>> = flow {
+        emit(
+            ResponseToRequest.send(productsRemoteDataSource.findByCategory(idCategory))
+        )
     }
+
 
     override suspend fun create(product: Product, files: List<File>): Resource<Product> = ResponseToRequest.send(
         productsRemoteDataSource.create(product, files)
