@@ -181,7 +181,7 @@ fun AdminProductUpdateContent(paddingValues: PaddingValues, vm: AdminProductUpda
                 .padding(bottom = 15.dp),
                 text = "Actualizar Producto",
                 onClick = {
-                    vm.createProduct()
+                    vm.updateProduct()
                 }
             )
         }

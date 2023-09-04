@@ -7,10 +7,10 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.aldeadavila.ecommercemvvm.domain.model.Category
 import com.aldeadavila.ecommercemvvm.domain.model.Product
 import com.aldeadavila.ecommercemvvm.domain.usecase.products.ProductsUseCase
 import com.aldeadavila.ecommercemvvm.domain.util.Resource
+import com.aldeadavila.ecommercemvvm.ui.screens.admin.product.create.AdminProductUpdateState
 import com.aldeadavila.ecommercemvvm.ui.screens.admin.product.create.mapper.toProduct
 import com.aldeadavila.ecommercemvvm.ui.util.ComposeFileProvider
 import com.aldeadavila.ecommercemvvm.ui.util.ResultingActivityHandler
@@ -53,12 +53,12 @@ class AdminProductUpdateViewModel @Inject constructor(
         )
     }
 
-    fun createProduct() = viewModelScope.launch {
-        if(file1 != null && file2 != null) {
-            files = listOf(file1!!, file2!!)
+    fun updateProduct() = viewModelScope.launch {
+        if(file1 == null && file2 == null) {
+       //     files = listOf(file1!!, file2!!)
             productResponse = Resource.Loading
-         //   val result = productUseCase.createProduct(state.toProduct(), files)
-          //  productResponse = result
+            val result = productUseCase.updateProduct(product.id!!, state.toProduct())
+            productResponse = result
         }
 
     }

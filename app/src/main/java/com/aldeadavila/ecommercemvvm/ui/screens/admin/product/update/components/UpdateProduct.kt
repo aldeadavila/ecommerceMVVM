@@ -20,7 +20,7 @@ fun UpdateProduct(vm: AdminProductUpdateViewModel = hiltViewModel()) {
             /*Log.d("UpdateUser", "Data: ${response.data}")
             vm.categoryResponse(response.data)*/
 
-            Toast.makeText(LocalContext.current, "El producto se ha creado correctamente", Toast.LENGTH_LONG).show()
+            Toast.makeText(LocalContext.current, "El producto se ha actualizado correctamente", Toast.LENGTH_LONG).show()
         }
 
         is Resource.Failure -> {

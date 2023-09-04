@@ -5,9 +5,11 @@ import com.aldeadavila.ecommercemvvm.domain.model.Product
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Part
 import retrofit2.http.Path
 
@@ -26,6 +28,12 @@ interface ProductsService {
         @Part("description") description: RequestBody,
         @Part("id_category") idCategory: RequestBody,
         @Part("price") price: RequestBody,
+    ): Response<Product>
+
+    @PUT("products/{id}")
+    suspend fun update(
+        @Path("id") id: String,
+        @Body product: Product
     ): Response<Product>
 
 

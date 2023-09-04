@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.aldeadavila.ecommercemvvm.domain.model.Category
+import com.aldeadavila.ecommercemvvm.ui.components.DefaultTopBar
 import com.aldeadavila.ecommercemvvm.ui.navigation.Graph
 import com.aldeadavila.ecommercemvvm.ui.navigation.screen.admin.AdminCategoryScreen
 import com.aldeadavila.ecommercemvvm.ui.screens.admin.product.list.components.AdminProductListContent
@@ -25,6 +26,14 @@ fun AdminProductListScreen(navHostController: NavHostController, categoryParam: 
     val categoryParse = Category.fromJson(categoryParam).toJson()
 
     Scaffold (
+        topBar = {
+                 DefaultTopBar(
+                     title = "Productos",
+                     navController  = navHostController,
+                     upAvailable = true
+
+                 )
+        },
         floatingActionButton = {
             FloatingActionButton(
                 modifier = Modifier.padding(bottom = 20.dp),
