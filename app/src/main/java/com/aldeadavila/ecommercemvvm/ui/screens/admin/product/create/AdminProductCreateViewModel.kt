@@ -27,7 +27,7 @@ class AdminProductCreateViewModel @Inject constructor(
     private val productUseCase: ProductsUseCase
 ): ViewModel() {
 
-    var state by mutableStateOf(AdminProductUpdateState())
+    var state by mutableStateOf(AdminProductCreateState())
         private set
 
     var productResponse by mutableStateOf<Resource<Product>?>(null)

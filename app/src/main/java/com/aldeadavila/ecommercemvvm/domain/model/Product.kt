@@ -13,7 +13,8 @@ data class Product(
     @SerializedName("id_category")val idCategory: String,
     @SerializedName("image1")val image1: String? = null,
     @SerializedName("image2")val image2: String? = null,
-    @SerializedName("price")val price: Double
+    @SerializedName("price")val price: Double,
+    @SerializedName("images_to_update")val imagesToUpdate: List<Int>? = listOf()
 ): Serializable {
 
     fun toJson(): String = Gson().toJson(
@@ -31,6 +32,7 @@ data class Product(
                 StandardCharsets.UTF_8.toString()
             ) else "",
             price,
+            imagesToUpdate
         )
     )
 

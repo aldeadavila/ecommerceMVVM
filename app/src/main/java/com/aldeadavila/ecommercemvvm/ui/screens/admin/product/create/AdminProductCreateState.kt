@@ -1,6 +1,6 @@
 package com.aldeadavila.ecommercemvvm.ui.screens.admin.product.create
 
-data class AdminProductUpdateState(
+data class AdminProductCreateState(
 
     val id: String = "",
     val name: String = "",
