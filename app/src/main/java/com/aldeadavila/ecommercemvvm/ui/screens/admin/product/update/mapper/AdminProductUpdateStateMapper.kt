@@ -5,7 +5,7 @@ import com.aldeadavila.ecommercemvvm.ui.screens.admin.product.update.AdminProduc
 
 fun AdminProductUpdateState.toProduct(): Product {
     return Product(
-        id = id,
+
         name = name,
         description = description,
         idCategory = idCategory,

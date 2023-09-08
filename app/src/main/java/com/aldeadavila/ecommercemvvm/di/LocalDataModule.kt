@@ -5,7 +5,10 @@ import com.aldeadavila.ecommercemvvm.data.datasource.local.AuthLocalDataSource
 import com.aldeadavila.ecommercemvvm.data.datasource.local.AuthLocalDataSourceImpl
 import com.aldeadavila.ecommercemvvm.data.datasource.local.CategoriesLocalDataSource
 import com.aldeadavila.ecommercemvvm.data.datasource.local.CategoriesLocalDataSourceImpl
+import com.aldeadavila.ecommercemvvm.data.datasource.local.ProductsLocalDataSource
+import com.aldeadavila.ecommercemvvm.data.datasource.local.ProductsLocalDataSourceImpl
 import com.aldeadavila.ecommercemvvm.data.datasource.local.dao.CategoriesDao
+import com.aldeadavila.ecommercemvvm.data.datasource.local.dao.ProductsDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,4 +23,7 @@ object LocalDataModule {
 
     @Provides
     fun provideCategoriesLocalDataSource(categoriesDao: CategoriesDao): CategoriesLocalDataSource = CategoriesLocalDataSourceImpl(categoriesDao)
+
+    @Provides
+    fun provideProductsLocalDataSource(productsDao: ProductsDao): ProductsLocalDataSource = ProductsLocalDataSourceImpl(productsDao)
 }

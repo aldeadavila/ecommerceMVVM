@@ -3,6 +3,7 @@ package com.aldeadavila.ecommercemvvm.di
 import android.app.Application
 import androidx.room.Room
 import com.aldeadavila.ecommercemvvm.data.datasource.local.dao.CategoriesDao
+import com.aldeadavila.ecommercemvvm.data.datasource.local.dao.ProductsDao
 import com.aldeadavila.ecommercemvvm.data.datasource.local.db.EcommerceDB
 import dagger.Module
 import dagger.Provides
@@ -21,4 +22,7 @@ object DatabaseModule {
 
     @Provides
     fun provideCategoriesDao(db: EcommerceDB): CategoriesDao = db.categoriesDAO()
+
+    @Provides
+    fun provideProductssDao(db: EcommerceDB): ProductsDao = db.productsDAO()
 }

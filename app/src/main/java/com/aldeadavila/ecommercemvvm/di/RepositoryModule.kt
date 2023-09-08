@@ -5,6 +5,7 @@ import com.aldeadavila.ecommercemvvm.data.repository.CategoriesRespositoryImpl
 import com.aldeadavila.ecommercemvvm.data.repository.UsersRepositoryImpl
 import com.aldeadavila.ecommercemvvm.data.datasource.local.AuthLocalDataSource
 import com.aldeadavila.ecommercemvvm.data.datasource.local.CategoriesLocalDataSource
+import com.aldeadavila.ecommercemvvm.data.datasource.local.ProductsLocalDataSource
 import com.aldeadavila.ecommercemvvm.data.datasource.remote.AuthRemoteDatasource
 import com.aldeadavila.ecommercemvvm.data.datasource.remote.CategoriesRemoteDatasource
 import com.aldeadavila.ecommercemvvm.data.datasource.remote.ProductsRemoteDataSource
@@ -42,6 +43,7 @@ object RepositoryModule {
 
     @Provides
     fun provideProductsRepository(
-        productsRemoteDataSource: ProductsRemoteDataSource
-    ): ProductsRepository = ProductsRepositoryImpl(productsRemoteDataSource)
+        productsRemoteDataSource: ProductsRemoteDataSource,
+        productsLocalDataSource: ProductsLocalDataSource
+    ): ProductsRepository = ProductsRepositoryImpl(productsRemoteDataSource, productsLocalDataSource)
 }
