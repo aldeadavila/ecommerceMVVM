@@ -18,6 +18,7 @@ import com.aldeadavila.ecommercemvvm.domain.usecase.categories.GetCategoryUseCas
 import com.aldeadavila.ecommercemvvm.domain.usecase.categories.UpdateCategoryUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.categories.UpdateCategoryWithImageUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.products.CreateProductUseCase
+import com.aldeadavila.ecommercemvvm.domain.usecase.products.DeleteProductUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.products.FindByCategoryUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.products.ProductsUseCase
 import com.aldeadavila.ecommercemvvm.domain.usecase.products.UpdateProductUseCase
@@ -65,6 +66,7 @@ object UseCaseModule {
         createProduct = CreateProductUseCase(productsRepository),
         findByCategory = FindByCategoryUseCase(productsRepository),
         updateProduct = UpdateProductUseCase(productsRepository),
-        updateProductWithImage = UpdateProductWithImageUseCase(productsRepository)
+        updateProductWithImage = UpdateProductWithImageUseCase(productsRepository),
+        deleteProduct = DeleteProductUseCase(productsRepository)
     )
 }

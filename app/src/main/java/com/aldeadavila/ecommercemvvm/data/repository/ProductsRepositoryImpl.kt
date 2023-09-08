@@ -33,7 +33,7 @@ class ProductsRepositoryImpl(private val productsRemoteDataSource: ProductsRemot
         productsRemoteDataSource.update(id, product)
     )
 
-    override suspend fun detele(id: String): Resource<Unit> {
-        TODO("Not yet implemented")
-    }
+    override suspend fun detele(id: String): Resource<Unit> = ResponseToRequest.send(
+        productsRemoteDataSource.detele(id)
+    )
 }

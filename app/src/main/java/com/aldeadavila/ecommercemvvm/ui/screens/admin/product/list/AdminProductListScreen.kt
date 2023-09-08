@@ -14,9 +14,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.aldeadavila.ecommercemvvm.domain.model.Category
 import com.aldeadavila.ecommercemvvm.ui.components.DefaultTopBar
-import com.aldeadavila.ecommercemvvm.ui.navigation.Graph
 import com.aldeadavila.ecommercemvvm.ui.navigation.screen.admin.AdminCategoryScreen
-import com.aldeadavila.ecommercemvvm.ui.screens.admin.product.list.components.AdminProductListContent
+import com.aldeadavila.ecommercemvvm.ui.screens.admin.product.list.components.DeleteProduct
 import com.aldeadavila.ecommercemvvm.ui.screens.admin.product.list.components.GetProducts
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -51,4 +50,5 @@ fun AdminProductListScreen(navHostController: NavHostController, categoryParam: 
     ) {
         GetProducts(navHostController = navHostController, paddingValues = it)
     }
+    DeleteProduct()
 }

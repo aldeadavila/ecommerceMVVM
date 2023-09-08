@@ -67,7 +67,5 @@ class ProductsRemoteDataSourceImpl(private val productsService: ProductsService)
 
     override suspend fun update(id: String, product: Product): Response<Product> = productsService.update(id, product)
 
-    override suspend fun detele(id: String): Response<Unit> {
-        TODO("Not yet implemented")
-    }
+    override suspend fun detele(id: String): Response<Unit> = productsService.delete(id)
 }

@@ -31,7 +31,7 @@ import com.aldeadavila.ecommercemvvm.ui.screens.admin.category.list.AdminCategor
 import com.aldeadavila.ecommercemvvm.ui.screens.admin.product.list.AdminProductListViewModel
 
 @Composable
-fun AdminProductListItem(navHostController: NavHostController, product: Product) {
+fun AdminProductListItem(navHostController: NavHostController, product: Product, vm: AdminProductListViewModel = hiltViewModel()) {
 
     Column(
         modifier = Modifier
@@ -91,7 +91,7 @@ fun AdminProductListItem(navHostController: NavHostController, product: Product)
                     modifier = Modifier
                         .size(25.dp)
                         .clickable {
-
+                            vm.deleteProduct(product.id ?: "")
                         },
                     painter = painterResource(id = R.drawable.trash),
                     contentDescription = "eliminar"
