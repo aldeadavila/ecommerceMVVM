@@ -1,5 +1,6 @@
 package com.aldeadavila.ecommercemvvm.ui.screens.client.category.list.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,12 +19,17 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.aldeadavila.ecommercemvvm.domain.model.Category
+import com.aldeadavila.ecommercemvvm.ui.navigation.screen.client.ClientCategoryScreen
 
 @Composable
 fun ClientCategoryListItem(navHostController: NavHostController, category: Category) {
 
     Card(
-        modifier = Modifier.padding(bottom = 15.dp),
+        modifier = Modifier
+            .padding(bottom = 15.dp)
+            .clickable {
+                       navHostController.navigate(route = ClientCategoryScreen.ProductList.passCategory(category.toJson()))
+            },
         elevation = CardDefaults.cardElevation(4.dp),
         shape = RoundedCornerShape(20.dp)
     ) {

@@ -18,7 +18,7 @@ fun ClientNavGraph(navController: NavHostController) {
         startDestination = ClientScreen.ProductList.route
     ) {
         composable(route = ClientScreen.ProductList.route) {
-            ClientProductListScreen()
+            ClientProductListScreen(navController)
         }
 
         composable(route = ClientScreen.CategoryList.route) {
@@ -30,5 +30,7 @@ fun ClientNavGraph(navController: NavHostController) {
         }
 
        ProfileNavGraph(navController)
+
+        ClientCategoryNavGraph(navController)
     }
 }

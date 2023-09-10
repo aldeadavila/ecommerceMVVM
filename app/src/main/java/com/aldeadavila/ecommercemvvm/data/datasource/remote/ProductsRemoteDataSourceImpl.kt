@@ -12,9 +12,7 @@ import retrofit2.Response
 import java.io.File
 
 class ProductsRemoteDataSourceImpl(private val productsService: ProductsService): ProductsRemoteDataSource {
-    override suspend fun findAll(): Flow<Response<List<Product>>> {
-        TODO("Not yet implemented")
-    }
+    override suspend fun findAll(): Response<List<Product>> = productsService.findAll()
 
     override suspend fun findByCategory(idCategory: String): Response<List<Product>> = productsService.findByCategory(idCategory)
 
