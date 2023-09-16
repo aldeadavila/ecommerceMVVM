@@ -75,6 +75,12 @@ dependencies {
     implementation("androidx.room:room-ktx:$room_version")
 
 
+    //SLIDES
+    implementation("com.google.accompanist:accompanist-pager:0.22.0-rc")
+    // If using indicators, also depend on
+    implementation("com.google.accompanist:accompanist-pager-indicators:0.22.0-rc")
+
+
     //FILES INFORMATION
     implementation("commons-io:commons-io:2.7")
 

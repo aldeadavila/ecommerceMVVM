@@ -1,5 +1,6 @@
 package com.aldeadavila.ecommercemvvm.ui.screens.client.product.listbycategory.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -20,6 +21,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.aldeadavila.ecommercemvvm.domain.model.Product
+import com.aldeadavila.ecommercemvvm.ui.navigation.screen.client.ClientProductScreen
 import com.aldeadavila.ecommercemvvm.ui.screens.client.product.listbycategory.ClientProductListByCategoryViewModel
 
 @Composable
@@ -30,6 +32,9 @@ fun ClientProductListByCategoryItem(navHostController: NavHostController, produc
         modifier = Modifier
             .padding(start = 20.dp, end = 20.dp, top = 15.dp)
             .height(90.dp)
+            .clickable {
+                navHostController.navigate(route = ClientProductScreen.ProductDetail.passProduct(product.toJson()))
+            }
 
     ) {
         Row {

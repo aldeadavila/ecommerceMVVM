@@ -29,8 +29,10 @@ fun ClientNavGraph(navController: NavHostController) {
             ProfileScreen(navController)
         }
 
-       ProfileNavGraph(navController)
+        ProfileNavGraph(navController)
 
         ClientCategoryNavGraph(navController)
+
+        ClientProudctNavGraph(navController)
     }
 }
